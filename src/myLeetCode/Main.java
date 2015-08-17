@@ -5,6 +5,11 @@ import java.util.List;
 public class Main {
 	public static void main(String[] args){
 		String s;
+		int n;
+		
+		L118PascalsTriangle test118 = new L118PascalsTriangle();
+		test118.main(6);
+		for (int i=0; i<5; i++) test118.main(i);
 		
 		//s = "[()[]{}]";
 		//L20ValidParentheses test20 = new L20ValidParentheses();
@@ -29,15 +34,16 @@ public class Main {
 			System.out.println(s3.get(i));
 			System.out.println(test32.main(s3.get(i)));
 		}*/
-		
-		
+		/*
 		L125ValidPalindrome test125 = new L125ValidPalindrome();
 		s = "ab2a";
 		test125.main(s);
 		s = "A man, a plan, a canal: Panama";
 		test125.main(s);
 		s = "race a car";
-		test125.main(s);
+		test125.main(s);*/
+		
+
 		
 		
 	}
