@@ -14,7 +14,7 @@ public class L118PascalsTriangle {
         }
         if (numRows<=1) return ans;
         for (int i=1; i<numRows; i++){
-            curLine.clear();
+            curLine = new ArrayList<Integer>();
             lastLine = ans.get(i-1);
             curLine.add(1);
             for (int j=1; j<lastLine.size(); j++){

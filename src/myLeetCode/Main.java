@@ -7,9 +7,20 @@ public class Main {
 		String s;
 		int n;
 		
-		L118PascalsTriangle test118 = new L118PascalsTriangle();
+		TreeNode[] nodes = new TreeNode[4];
+		for (int i=0; i<nodes.length; i++)
+			nodes[i] = new TreeNode(i);
+		nodes[0].left = nodes[1];
+		nodes[1].right = nodes[2];
+		nodes[0].right = nodes[3];
+		L257BinaryTreePaths test257 = new L257BinaryTreePaths();
+		test257.main(nodes[0]);
+		
+		
+		/*L118PascalsTriangle test118 = new L118PascalsTriangle();
 		test118.main(6);
 		for (int i=0; i<5; i++) test118.main(i);
+		*/
 		
 		//s = "[()[]{}]";
 		//L20ValidParentheses test20 = new L20ValidParentheses();
