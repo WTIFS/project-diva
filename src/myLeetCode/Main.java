@@ -6,8 +6,42 @@ public class Main {
 	public static void main(String[] args){
 		String s;
 		int n;
+		ListNode l1, l2;
 		
-		TreeNode[] nodes = new TreeNode[4];
+		L21MergeTwoSortedLists test21 = new L21MergeTwoSortedLists();
+		l1 = new ListNode(1);
+		l2 = new ListNode(2);
+		ListNode l1cur = l1;
+		ListNode l2cur = l2;
+		for (int i=3; i<9; i++){
+			if (i%2==1){
+				l1cur.next = new ListNode(i);
+				l1cur = l1cur.next;
+			}
+			else {
+				l2cur.next = new ListNode(i);
+				l2cur = l2cur.next;
+			}
+		}
+		test21.main(l1, l2);
+		/*
+		L264UglyNumberII test264 = new L264UglyNumberII();
+		for (int i=0; i<9; i++)
+			test264.main(i);
+			*/
+		
+		/*
+		L263UglyNumber test263 = new L263UglyNumber();
+		for (int i=0; i<9; i++)
+		test263.main(i);
+		*/
+		
+		/*
+		L258AddDigits test258 = new L258AddDigits();
+		test258.main(38);
+		*/
+		
+		/*TreeNode[] nodes = new TreeNode[4];
 		for (int i=0; i<nodes.length; i++)
 			nodes[i] = new TreeNode(i);
 		nodes[0].left = nodes[1];
@@ -15,7 +49,7 @@ public class Main {
 		nodes[0].right = nodes[3];
 		L257BinaryTreePaths test257 = new L257BinaryTreePaths();
 		test257.main(nodes[0]);
-		
+		*/
 		
 		/*L118PascalsTriangle test118 = new L118PascalsTriangle();
 		test118.main(6);
