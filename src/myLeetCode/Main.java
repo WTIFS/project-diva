@@ -8,6 +8,26 @@ public class Main {
 		int n;
 		ListNode l1, l2;
 		
+		L28ImplementstrStr test28 = new L28ImplementstrStr();
+		s = "asdf";
+		test28.main(s, "sd");
+		test28.main(s, "e");
+		test28.main("abbabaaaabbbaabaabaabbbaaabaaaaaabbbabbaabbabaabbabaaaaababbabbaaaaabbbbaaabbaaabbbbabbbbaaabbaaaaababbaababbabaaabaabbbbbbbaabaabaabbbbababbbababbaaababbbabaabbaaabbbba", "bbbbbbaa");		
+		/*
+		L27RemoveElement test27 = new L27RemoveElement();
+		int[] nums = new int[]{1,1,2,6,3,2,1,8};
+		int[] nums2 = new int[]{1};
+		test27.main(nums, 2);
+		test27.main(nums2, 1);
+		*/
+		
+		/*
+		L26RemoveDuplicatesfromSortedArray test26 = new L26RemoveDuplicatesfromSortedArray();
+		int[] nums = new int[]{1,1,2};
+		test26.main(nums);
+		*/
+		
+		/*
 		L21MergeTwoSortedLists test21 = new L21MergeTwoSortedLists();
 		l1 = new ListNode(1);
 		l2 = new ListNode(2);
@@ -24,6 +44,8 @@ public class Main {
 			}
 		}
 		test21.main(l1, l2);
+		*/
+		
 		/*
 		L264UglyNumberII test264 = new L264UglyNumberII();
 		for (int i=0; i<9; i++)
