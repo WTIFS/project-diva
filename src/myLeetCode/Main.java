@@ -7,12 +7,68 @@ public class Main {
 		String s;
 		int n;
 		ListNode l1, l2;
-		
-		L28ImplementstrStr test28 = new L28ImplementstrStr();
 		s = "asdf";
+		TreeNode[] t = new TreeNode[5];
+		TreeNode[] t2 = new TreeNode[5];
+		
+		char[][] board = {
+				"..4...63.".toCharArray(),
+				".........".toCharArray(),
+				"5......9.".toCharArray(),
+				"...56....".toCharArray(),
+				"4.3.....1".toCharArray(),
+				"...7.....".toCharArray(),
+				"...5.....".toCharArray(),
+				".........".toCharArray(),
+				".........".toCharArray()};
+		L36ValidSudoku test36 = new L36ValidSudoku();
+		test36.main(board);
+		board = new char[][]{
+				 "....5..1.".toCharArray(),
+		         ".4.3.....".toCharArray(),
+		         ".....3..1".toCharArray(),
+		         "8......2.".toCharArray(),
+		         "..2.7....".toCharArray(),
+		         ".15......".toCharArray(),
+		         ".....2...".toCharArray(),
+		         ".2.9.....".toCharArray(),
+		         "..4......".toCharArray()};
+		test36.main(board);
+		
+		/*
+		for (int i=1; i<5; i++){
+			t[i] = new TreeNode(i);//1-4
+			t2[i] = new TreeNode(i);
+		}
+		t[1].left = t[2];
+		t[1].right = t2[2];
+		t[2].left = t[3];
+		t[2].right = t[4];
+		t2[2].left = t2[4];
+		t2[2].right = t2[3];
+		*/
+		
+		/*
+		L101SymmetricTree test101 = new L101SymmetricTree();
+		test101.main(t[1]);
+		*/
+		
+		/*
+		L214ShortestPalindrome test214 = new L214ShortestPalindrome();
+		test214.main(s);
+		s = "waaaaaba";
+		test214.main(s);
+		s = "babbbabbaba";
+		test214.main(s);
+		*/
+		
+		/*
+		L28ImplementstrStr test28 = new L28ImplementstrStr();
 		test28.main(s, "sd");
 		test28.main(s, "e");
 		test28.main("abbabaaaabbbaabaabaabbbaaabaaaaaabbbabbaabbabaabbabaaaaababbabbaaaaabbbbaaabbaaabbbbabbbbaaabbaaaaababbaababbabaaabaabbbbbbbaabaabaabbbbababbbababbaaababbbabaabbaaabbbba", "bbbbbbaa");		
+		*/
+		
 		/*
 		L27RemoveElement test27 = new L27RemoveElement();
 		int[] nums = new int[]{1,1,2,6,3,2,1,8};
