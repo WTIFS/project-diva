@@ -11,6 +11,40 @@ public class Main {
 		TreeNode[] t = new TreeNode[5];
 		TreeNode[] t2 = new TreeNode[5];
 		
+		int[] nums = new int[]{0,1,10,11,20,21, 100,101, 1000, 1001, 1010, 1100, 10000, 100000, 100001, 110000, 1234567891};
+		L273IntegertoEnglishWords test273 = new L273IntegertoEnglishWords();
+		for (int i=0; i<nums.length; i++)
+		test273.main(nums[i]);
+		
+		/*
+		l1 = new ListNode(1);
+		ListNode l1cur = l1;
+		for (int i=3; i<9; i++){
+			l1cur.next = new ListNode(i/2);
+			l1cur = l1cur.next;
+		}*/
+		
+		L134GasStation test134 = new L134GasStation();
+		int[] gas = new int[]{6,1,4,3,5};
+		int[] cost = new int[]{3,8,2,4,2};
+		test134.main(gas, cost);
+		
+		/*
+		L70ClimbingStairs test70 = new L70ClimbingStairs();
+		for (int i=1;i<10;i++)
+		test70.main(i);*/
+		
+		/*
+		L83RemoveDuplicatesfromSortedList test83 = new L83RemoveDuplicatesfromSortedList();
+		test83.main(l1);
+		*/
+		
+		/*
+		L38CountandSay test38 = new L38CountandSay();
+		test38.main(6);
+		*/
+		
+		/*
 		char[][] board = {
 				"..4...63.".toCharArray(),
 				".........".toCharArray(),
@@ -34,6 +68,7 @@ public class Main {
 		         ".2.9.....".toCharArray(),
 		         "..4......".toCharArray()};
 		test36.main(board);
+		*/
 		
 		/*
 		for (int i=1; i<5; i++){
