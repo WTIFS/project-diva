@@ -9,6 +9,7 @@ var words2 = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy
 var words3 = ["", "Thousand", "Million", "Billion"];
 
 var numberToWords = function(num) {
+	if (num===0) return "Zero";
     var s = "";
     var count = 0;
     while (num>0){

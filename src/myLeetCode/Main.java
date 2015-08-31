@@ -11,10 +11,29 @@ public class Main {
 		TreeNode[] t = new TreeNode[5];
 		TreeNode[] t2 = new TreeNode[5];
 		
+		char[][] grid = new char[][]{
+			"11110".toCharArray(),
+			"11010".toCharArray(),
+			"11000".toCharArray(),
+			"00000".toCharArray()};
+		L200NumberOfIslands test200 = new L200NumberOfIslands();
+		test200.main(grid);
+		grid = new char[][]{
+			"11000".toCharArray(),
+			"11000".toCharArray(),
+			"00100".toCharArray(),
+			"00011".toCharArray()
+		};
+		test200.main(grid);
+		
+		/*L201BitwiseANDofNumbersRange test201 = new L201BitwiseANDofNumbersRange();
+		test201.main(5, 7);*/
+		
+		/*
 		int[] nums = new int[]{0,1,10,11,20,21, 100,101, 1000, 1001, 1010, 1100, 10000, 100000, 100001, 110000, 1234567891};
 		L273IntegertoEnglishWords test273 = new L273IntegertoEnglishWords();
 		for (int i=0; i<nums.length; i++)
-		test273.main(nums[i]);
+		test273.main(nums[i]);*/
 		
 		/*
 		l1 = new ListNode(1);
@@ -24,10 +43,11 @@ public class Main {
 			l1cur = l1cur.next;
 		}*/
 		
+		/*
 		L134GasStation test134 = new L134GasStation();
 		int[] gas = new int[]{6,1,4,3,5};
 		int[] cost = new int[]{3,8,2,4,2};
-		test134.main(gas, cost);
+		test134.main(gas, cost);*/
 		
 		/*
 		L70ClimbingStairs test70 = new L70ClimbingStairs();
