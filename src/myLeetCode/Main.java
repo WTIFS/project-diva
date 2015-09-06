@@ -10,7 +10,23 @@ public class Main {
 		s = "asdf";
 		TreeNode[] t = new TreeNode[5];
 		TreeNode[] t2 = new TreeNode[5];
+		int[] nums = new int[]{1,3,5,7,9,2,4,6,8,10};
 		
+		/*
+		L274HIndex test274 = new L274HIndex();
+		test274.main(nums);
+		nums = new int[]{};
+		test274.main(nums);
+		nums = new int[]{0};
+		test274.main(nums);
+		nums = new int[]{1};
+		test274.main(nums);*/
+		
+		
+		Sort testSort = new Sort();
+		testSort.main(nums);
+		
+		/*
 		char[][] grid = new char[][]{
 			"11110".toCharArray(),
 			"11010".toCharArray(),
@@ -22,9 +38,8 @@ public class Main {
 			"11000".toCharArray(),
 			"11000".toCharArray(),
 			"00100".toCharArray(),
-			"00011".toCharArray()
-		};
-		test200.main(grid);
+			"00011".toCharArray()};
+		test200.main(grid);*/
 		
 		/*L201BitwiseANDofNumbersRange test201 = new L201BitwiseANDofNumbersRange();
 		test201.main(5, 7);*/
