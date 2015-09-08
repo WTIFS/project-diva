@@ -34,12 +34,16 @@ public class L274HIndex {
     	int len = citations.length;
     	if (len==0) return 0;
     	Sort.qsort2(citations, 0, len-1);
-    	int i=0;
-    	while (i<len && citations[i]>=i+1) i++;
-    	if (i>0) i--;
-    	return Math.min(i+1, citations[i]);
+    	int count=0;
+    	while (count<len && citations[count]>=count+1) count++;
+    	if (count>0) {
+    		//count--;
+    		//return count+1;
+    		//or:
+    		return count;
+    	}
+    	return 0;
     	//Arrays.sort(citations, Collections.reverseOrder() );
-    	//return 0;
     }
 
     

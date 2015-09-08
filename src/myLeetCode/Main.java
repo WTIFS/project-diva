@@ -12,7 +12,24 @@ public class Main {
 		TreeNode[] t2 = new TreeNode[5];
 		int[] nums = new int[]{1,3,5,7,9,2,4,6,8,10};
 		
+		L276FirstBadVersion test276= new L276FirstBadVersion();
+		nums = new int[]{};
+		test276.main(nums, 0);
+		nums = new int[]{0};
+		test276.main(nums, 1);
+		nums = new int[]{1};
+		test276.main(nums, 1);
+		nums = new int[]{0,1};
+		test276.main(nums, 2);
+		nums = new int[]{0,0,1};
+		test276.main(nums, 3);
+		nums = new int[]{0,0,1,1};
+		test276.main(nums, 4);
+		
 		/*
+		L275HIndexII test275 = new L275HIndexII();
+		test275.main(nums);
+		
 		L274HIndex test274 = new L274HIndex();
 		test274.main(nums);
 		nums = new int[]{};
@@ -22,9 +39,9 @@ public class Main {
 		nums = new int[]{1};
 		test274.main(nums);*/
 		
-		
+		/*
 		Sort testSort = new Sort();
-		testSort.main(nums);
+		testSort.main(nums);*/
 		
 		/*
 		char[][] grid = new char[][]{
