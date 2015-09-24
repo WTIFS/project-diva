@@ -2,16 +2,40 @@ package myLeetCode;
 
 import java.util.List;
 
+import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
+
 public class Main {
 	public static void main(String[] args){
 		String s;
 		int n;
 		ListNode l1, l2;
 		s = "asdf";
-		TreeNode[] t = new TreeNode[5];
+		TreeNode[] t = new TreeNode[6];
 		TreeNode[] t2 = new TreeNode[5];
 		int[] nums = new int[]{1,3,5,7,9,2,4,6,8,10};
 		
+		for (int i=0; i<t.length; i++)
+			t[i] = new TreeNode(i);
+		
+		t[1].right = t[2];
+		L230KthSmallestElementInABST test230 = new L230KthSmallestElementInABST();
+		test230.main(t[1], 2);
+		t[1].right = null;
+		t[2].left = t[1];
+		test230.main(t[2], 1);
+		
+		/*
+		t[0].left = t[1];
+		t[0].right = t[2];
+		t[1].left = t[3];
+		t[1].right = t[4];
+		t[3].left = t[5];
+		L236LowestCommonAncestorOfABinaryTree test236 = new L236LowestCommonAncestorOfABinaryTree();
+		test236.main(t[0], t[5], t[4]);
+		test236.main(t[0], t[5], t[2]);*/
+		
+		
+		/*
 		L276FirstBadVersion test276= new L276FirstBadVersion();
 		nums = new int[]{};
 		test276.main(nums, 0);
@@ -24,7 +48,7 @@ public class Main {
 		nums = new int[]{0,0,1};
 		test276.main(nums, 3);
 		nums = new int[]{0,0,1,1};
-		test276.main(nums, 4);
+		test276.main(nums, 4);*/
 		
 		/*
 		L275HIndexII test275 = new L275HIndexII();

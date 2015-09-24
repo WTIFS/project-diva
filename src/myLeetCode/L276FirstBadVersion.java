@@ -12,10 +12,27 @@ public class L276FirstBadVersion {
 		int mid;
 		while (b<e){
 			mid = b+(e-b)/2;
+			//(b+e)/2 is slow
 			if (isBadVersion(mid)) e = mid;
 			else b = mid + 1;
 		}
 		return e;
+		
+		/*
+		int count = n;
+        int step;
+
+        while (count > 0) {
+            step = count / 2;
+            mid = first + step;
+            if (!isBadVersion(mid)) {
+                first = mid + 1;
+                count -= (step + 1);
+            } else {
+                count = step;
+            }
+        }
+		 */
 	}
 	  
 	boolean isBadVersion(int version){
