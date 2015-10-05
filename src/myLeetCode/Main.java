@@ -14,15 +14,22 @@ public class Main {
 		TreeNode[] t2 = new TreeNode[5];
 		int[] nums = new int[]{1,3,5,7,9,2,4,6,8,10};
 		
-		for (int i=0; i<t.length; i++)
-			t[i] = new TreeNode(i);
+		//for (int i=0; i<t.length; i++)
+			//t[i] = new TreeNode(i);
 		
+		L208ImplementTrie test208 = new L208ImplementTrie();
+		test208.insert("abc");
+		test208.insert("asdf");
+		System.out.println(test208.search("abc"));
+		System.out.println(test208.startsWith("ae"));
+		
+		/*
 		t[1].right = t[2];
 		L230KthSmallestElementInABST test230 = new L230KthSmallestElementInABST();
 		test230.main(t[1], 2);
 		t[1].right = null;
 		t[2].left = t[1];
-		test230.main(t[2], 1);
+		test230.main(t[2], 1);*/
 		
 		/*
 		t[0].left = t[1];
