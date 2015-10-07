@@ -35,7 +35,7 @@ class Counter{
 	}
 }
 
-public class TreadTest {
+public class TestThread {
 	public static void main(String[] args){
 		
 		Thread threads[]=new Thread[1000];

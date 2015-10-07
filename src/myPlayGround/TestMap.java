@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class MapTest {
+public class TestMap {
 	private Map<Integer, Integer> map;
 	
-	public MapTest(){
+	public TestMap(){
 		map = new HashMap<Integer, Integer>();
 	}
 	

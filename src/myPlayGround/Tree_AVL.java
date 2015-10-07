@@ -1,43 +1,42 @@
 package myPlayGround;
 
 
-class TreeNode <T extends Comparable<T>>{
-	T data;
-	TreeNode<T> left;
-	TreeNode<T> right;
-	int height;
-	
-	public TreeNode(){
-		data = null;
-		left = null;
-		right = null;
-		height = -1;
-	}
-	
-	public TreeNode(T t){
-		data = t;
-		left = null;
-		right = null;
-		height = t==null? -1:0;
-	}
-	
-	public int getLH(){
-		if (left!=null) return left.height;
-		else return -1;
-	}
-	
-	public int getRH(){
-		if (right!=null) return right.height;
-		else return -1;
-	}
-	
-	public void setHeight(int h){
-		height = h;
-	}
-}
-
-
 public class Tree_AVL <T extends Comparable<T>>{
+	
+	private static class TreeNode <T>{
+		T data;
+		TreeNode<T> left;
+		TreeNode<T> right;
+		int height;
+		
+		public TreeNode(){
+			data = null;
+			left = null;
+			right = null;
+			height = -1;
+		}
+		
+		public TreeNode(T t){
+			data = t;
+			left = null;
+			right = null;
+			height = t==null? -1:0;
+		}
+		
+		public int getLH(){
+			if (left!=null) return left.height;
+			else return -1;
+		}
+		
+		public int getRH(){
+			if (right!=null) return right.height;
+			else return -1;
+		}
+		
+		public void setHeight(int h){
+			height = h;
+		}
+	}
 
 	TreeNode<T> root;
 	
@@ -65,8 +64,7 @@ public class Tree_AVL <T extends Comparable<T>>{
 	
 	public TreeNode<T> add(TreeNode<T> root, T t){
 		if (root == null){
-			root = new TreeNode<T>(t);
-			return root;
+			return new TreeNode<T>(t);
 		}
 		
 		int cp = t.compareTo((T) root.data);
@@ -75,8 +73,8 @@ public class Tree_AVL <T extends Comparable<T>>{
 		else if (cp<0) {
 			root.left = add(root.left, t);
 			if (root.getLH() - root.getRH()==2){
-				if (t.compareTo(root.left.data)<0) root = rotateLeft(root);
-				else root = rotateLR(root);
+				if (t.compareTo(root.left.data)<0) root = rotateLeft(root);//LL型（左左型）
+				else root = rotateLR(root);//LR
 			}
 		}
 		else {
@@ -144,10 +142,9 @@ public class Tree_AVL <T extends Comparable<T>>{
 	
 	private TreeNode<T> rotateLeft(TreeNode<T> root){
 		TreeNode<T> L = root.left;
-		TreeNode<T> LR = root.left.right;
 		
 		L.right = root;
-		root.left = LR;
+		root.left = L.right;
 		
 		root.height = Math.max(root.getLH(), root.getRH()) + 1;
 		L.height = Math.max(L.getLH(), root.height) + 1;
@@ -157,10 +154,9 @@ public class Tree_AVL <T extends Comparable<T>>{
 	
 	private TreeNode<T> rotateRight(TreeNode<T> root){
 		TreeNode<T> R = root.right;
-		TreeNode<T> RL = root.right.left;
 		
 		R.left = root;
-		root.right = RL;
+		root.right = R.left;
 		
 		root.height = Math.max(root.getLH(), root.getRH()) + 1;
 		R.height = Math.max(root.height, R.getRH()) + 1;

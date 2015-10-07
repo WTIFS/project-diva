@@ -1,6 +1,6 @@
 package myPlayGround;
 
-public class ClassInherit {
+public class TestInherit {
 
 	
 	static class B{

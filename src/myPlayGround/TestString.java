@@ -1,8 +1,6 @@
 package myPlayGround;
 
-import javafx.collections.ListChangeListener.Change;
-
-public class StringTest {
+public class TestString {
 	
 	public static void ChangeS(String s){
 		s = "fff";
@@ -10,6 +8,10 @@ public class StringTest {
 	
 	public static void ChangeS2(String s){
 		s = new String("fff");
+	}
+	
+	public static void ChangeSB(StringBuilder sb){
+		sb.append("yoo");
 	}
 	
 	public static void main(String[] args){
@@ -30,9 +32,13 @@ public class StringTest {
 		System.out.println(f==g);//false
 		
 		ChangeS(a);
-		System.out.println(a);
+		System.out.println(a);//not change
 
 		ChangeS2(a);
-		System.out.println(a);
+		System.out.println(a);//not change
+		
+		StringBuilder sb = new StringBuilder("lol");
+		ChangeSB(sb);
+		System.out.println(sb);//changed
 	}
 }
