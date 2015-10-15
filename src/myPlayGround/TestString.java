@@ -40,5 +40,6 @@ public class TestString {
 		StringBuilder sb = new StringBuilder("lol");
 		ChangeSB(sb);
 		System.out.println(sb);//changed
+		
 	}
 }
