@@ -1,6 +1,9 @@
 package myLeetCode;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import myLeetCode.L56MergeIntervals.Interval;
 
 import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
 
@@ -17,12 +20,29 @@ public class Main {
 		//for (int i=0; i<t.length; i++)
 			//t[i] = new TreeNode(i);
 		
+		L5LongestPalindromicSubstring test5 = new L5LongestPalindromicSubstring();
+		test5.main("abc");
+		test5.main("aba");
+		test5.main("abba");
+		test5.main("abbbbbbbba");
+		test5.main("ababccbaefd");
+		
+		/*
+		L56MergeIntervals test56 = new L56MergeIntervals();
+		Interval i1 = test56.new Interval(1,4);
+		Interval i2 = test56.new Interval(0,4);
+		List<Interval> intervals = new ArrayList<Interval>();
+		intervals.add(i1); intervals.add(i2);
+		test56.main(intervals);*/
+		
+		/*
 		L208ImplementTrie test208 = new L208ImplementTrie();
 		test208.insert("abc");
 		test208.insert("asdf");
 		System.out.println(test208.search("abc"));
 		System.out.println(test208.startsWith("ae"));
-		
+		*/
+				
 		/*
 		t[1].right = t[2];
 		L230KthSmallestElementInABST test230 = new L230KthSmallestElementInABST();

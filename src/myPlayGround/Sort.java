@@ -10,7 +10,7 @@ import myLeetCode.ArrayListList;
 
 public class Sort {
 	
-	public void swap(int a, int b){
+	public static void swap(int a, int b){
 		a = a + b;
 		b = a - b;
 		a = a - b;
@@ -270,9 +270,7 @@ public class Sort {
 			nums[largestIndex] = tmp;
 			AdjustHeap(nums, largestIndex, margin);
 		}
-		
 	}
-
 	
 	public void main(int[] nums){
 		qsort(nums);
@@ -318,6 +316,10 @@ public class Sort {
 		
 		qsort2(nums);
 		ans = test.heapSort(nums);
+		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
+		System.out.println("");
+		
+		swap(nums[0], nums[1]);
 		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
 		System.out.println("");
 	}
