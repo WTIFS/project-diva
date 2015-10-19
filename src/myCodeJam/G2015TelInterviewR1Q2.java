@@ -17,7 +17,7 @@ public class G2015TelInterviewR1Q2 {
 	private static int Y;
 	private static int Z;
 	
-	private static boolean[][] p = new boolean[Y][Y];
+	private static boolean[][] p;
 	
 	class Status{
 		int x;
@@ -35,8 +35,10 @@ public class G2015TelInterviewR1Q2 {
 	}
 	
 	public void listAll(){
-		
-		for (int i=0; i<Y; i++)
+
+		p = new boolean[X+1][Y+1];
+
+		for (int i=0; i<X; i++)
 			for (int j=0; j<Y; j++) p[i][j] = false;
 		
 		Queue<Status> queue = new LinkedList<Status>();
@@ -75,12 +77,12 @@ public class G2015TelInterviewR1Q2 {
 			
 			//x->y
 			if (f.y<Y && f.x>0){
-				if (f.y + f.x < Y){
+				if (f.y + f.x < Y  && !p[0][f.x+f.y]){
 					System.out.println(String.format("%d, %d", 0, f.x + f.y));
 					p[0][f.x+f.y] = true;
 					queue.offer(new Status(0, f.x+f.y));
 				}
-				else if (f.y + f.x > Y){
+				else if (f.y + f.x > Y && !p[f.x + f.y - Y][Y]){
 					Status f_new = new Status(f.x + f.y - Y, Y);
 					System.out.println(String.format("%d, %d", f_new.x, f_new.y));
 					p[f_new.x][Y] = true;
@@ -90,12 +92,12 @@ public class G2015TelInterviewR1Q2 {
 			
 			//y->x
 			if (f.x<X && f.y>0){
-				if (f.x + f.y < X){
+				if (f.x + f.y < X && !p[f.x+f.y][0]){
 					System.out.println(String.format("%d, %d", f.x + f.y, 0));
 					p[f.x+f.y][0] = true;
 					queue.offer(new Status(f.x + f.y, 0));
 				}
-				else if (f.x + f.y > X){
+				else if (f.x + f.y > X && !p[X][f.x + f.y - X]){
 					Status f_new = new Status(X, f.y + f.x - X);
 					p[X][f_new.y] = true;
 					queue.offer(f_new);
@@ -103,5 +105,12 @@ public class G2015TelInterviewR1Q2 {
 			}
 		}
 		
+	}
+
+	public static void main(String[] args){
+		X = 3;
+		Y = 5;
+		G2015TelInterviewR1Q2 test = new G2015TelInterviewR1Q2();
+		test.listAll();
 	}
 }
