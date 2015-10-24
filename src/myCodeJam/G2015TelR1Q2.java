@@ -3,15 +3,13 @@ package myCodeJam;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import sun.net.www.content.audio.x_aiff;
-
 /*
  * 2 cups, with capacity of X L and Y L
  * each cup can be cleared or filled with water, or pour to another
  * list all possible water volumes left
  */
 
-public class G2015TelInterviewR1Q2 {
+public class G2015TelR1Q2 {
 	
 	private static int X;
 	private static int Y;
@@ -110,7 +108,7 @@ public class G2015TelInterviewR1Q2 {
 	public static void main(String[] args){
 		X = 3;
 		Y = 5;
-		G2015TelInterviewR1Q2 test = new G2015TelInterviewR1Q2();
+		G2015TelR1Q2 test = new G2015TelR1Q2();
 		test.listAll();
 	}
 }
