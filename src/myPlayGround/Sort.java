@@ -1,10 +1,12 @@
 package myPlayGround;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 import myLeetCode.ArrayListList;
 
@@ -272,6 +274,50 @@ public class Sort {
 		}
 	}
 	
+	public int[] HeapSort2(int[] nums){
+		int ans[] = new int[nums.length];
+		PriorityQueue<Integer> queue = new PriorityQueue<Integer>(new Comparator<Integer>(){
+			@Override
+			//默认Comparator就是这样
+			public int compare(Integer i1, Integer i2) {
+			      if(i1 > i2) return 1;  
+	              else if(i1<i2)   return -1;  
+	              else  return 0;  
+			}
+		});
+		for (int i=0; i<nums.length; i++) queue.offer(nums[i]);
+		for (int i=0; i<nums.length; i++) ans[i] = queue.poll();	
+		return ans;
+	}
+	
+	//找第k大的数 也可以用基数排序
+	public int findKth(int[] nums, int k){
+	  return findKth(nums, k, 0, nums.length-1);
+	}
+
+	public int findKth(int[] nums, int k, int b, int e){
+	  if (b==e) return b;
+	  int index = partition(nums, b, e);
+	  if (index==k) return nums[index];
+	  else if (index<k) return findKth(nums, k-index, index, e);
+	  else return findKth(nums, k, b, index);
+	}
+
+	public int partition(int[] nums, int b, int e){
+	  int x = nums[b];
+	  int i = b;
+	  int j = e;
+	  while (i<j){
+		 while (i<j && nums[i]<x) i++;
+		 if (i<j) { nums[i] = nums[j]; j--; }
+		 while(i<j && nums[j]>x) j++;
+		 if (i<j) { nums[j] = nums[i]; i++; }
+	  }
+	  	nums[i] = x;
+		return i;
+	}
+	
+	
 	public void main(int[] nums){
 		qsort(nums);
 		for (int i=0; i<nums.length; i++) System.out.print(nums[i]+" ");
@@ -320,6 +366,11 @@ public class Sort {
 		System.out.println("");
 		
 		swap(nums[0], nums[1]);
+		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
+		System.out.println("");
+		
+		qsort2(nums);
+		ans = test.HeapSort2(nums);
 		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
 		System.out.println("");
 	}
