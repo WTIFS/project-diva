@@ -42,19 +42,19 @@ public class TestString {
 		System.out.println(sb);//changed
 
 		testEncode(a);
-		System.out.println("Ôü");
+		System.out.println("ï¿½ï¿½");
 	}
 
-	//×Ö·û±àÂë
+	//ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
 	//Ref: http://jiapumin.iteye.com/blog/1006144
 	public static void testEncode(String s){
 		try {
-			//getBytes(charset): Ê¹ÓÃÖ¸¶¨charset±àÂë
+			//getBytes(charset): Ê¹ï¿½ï¿½Ö¸ï¿½ï¿½charsetï¿½ï¿½ï¿½ï¿½
 			byte[] s_utf_enc = s.getBytes("UTF-8");
 			System.out.println(s_utf_enc);
 
 			/**
-			 * new String(byte, charset):Ê¹ÓÃÖÆ¶¨charset½âÂë
+			 * new String(byte, charset):Ê¹ï¿½ï¿½ï¿½Æ¶ï¿½charsetï¿½ï¿½ï¿½ï¿½
 			 * Constructs a new {@code String} by decoding the specified array of bytes
 			 * using the specified {@linkplain java.nio.charset.Charset charset}.  The
 			 * length of the new {@code String} is a function of the charset, and hence
@@ -63,13 +63,13 @@ public class TestString {
 			String s_gbk_dec = new String(s_utf_enc, "GBK");
 			System.out.println(s_gbk_dec);
 
-			//ÆðÊ¼µØÓÃISO±àÂë
-			String s_iso88591 = new String("ÖÐ".getBytes("UTF-8"), "ISO8859-1");
+			//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ISOï¿½ï¿½ï¿½ï¿½
+			String s_iso88591 = new String("ï¿½ï¿½".getBytes("UTF-8"), "ISO8859-1");
 			System.out.println(s_iso88591);
-			//Ä¿µÄµØÓÃISO½âÂë£¬UTF±àÂë
+			//Ä¿ï¿½Äµï¿½ï¿½ï¿½ISOï¿½ï¿½ï¿½ë£¬UTFï¿½ï¿½ï¿½ï¿½
 			String s_utf8 = new String(s_iso88591.getBytes("ISO8859-1"), "UTF-8");
 			System.out.println(s_utf8);
-			System.out.println("ÖÐ");
+			System.out.println("ï¿½ï¿½");
 		}
 		catch(Exception ex){
 

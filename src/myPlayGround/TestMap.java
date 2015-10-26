@@ -1,14 +1,22 @@
 package myPlayGround;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class TestMap {
 	private Map<Integer, Integer> map;
 	
 	public TestMap(){
 		map = new HashMap<Integer, Integer>();
+		
+		Map<Integer,ArrayList<Integer>> map = new HashMap<Integer, ArrayList<Integer>>();
+		for (Map.Entry<Integer, ArrayList<Integer>> e:map.entrySet()){
+			
+		}
 	}
 	
 	public void print1(){
