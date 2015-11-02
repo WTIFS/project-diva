@@ -43,6 +43,11 @@ public class TestString {
 
 		testEncode(a);
 		System.out.println("��");
+
+		String chineseTest = "我要金坷垃";
+		String chineseTest2 = "I want 金坷垃";
+		System.out.println(chineseTest + ": " + chineseTest.length());
+		System.out.println(chineseTest2 + ": " + chineseTest2.length());
 	}
 
 	//�ַ�����

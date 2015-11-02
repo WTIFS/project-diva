@@ -5,7 +5,7 @@ import java.util.Queue;
 
 /*
  * 2 cups, with capacity of X L and Y L
- * each cup can be cleared or filled with water, or pour to another
+ * each cup can be cleared or filled with water, or pour from one to the other
  * list all possible water volumes left
  */
 
@@ -13,7 +13,7 @@ public class G2015TelR1Q2 {
 	
 	private static int X;
 	private static int Y;
-	private static int Z;
+	//private static int Z;
 	
 	private static boolean[][] p;
 	

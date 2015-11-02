@@ -360,6 +360,9 @@ public class Sort {
 		
 		for (int i=0; i<ans.length; i++)
 		myPrinter.pr(findKth(ans, i));
+		//ans = test.HeapSort2(nums);
+		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
+		System.out.println("");
 	}
 }
 
