@@ -248,7 +248,7 @@ public class Sort {
 			int tmp = nums[0];//将最大点换到队尾，然后调整堆
 			nums[0] = nums[i];
 			nums[i] = tmp;
-			AdjustHeap(nums, 0, i-1);
+			adjustHeap(nums, 0, i-1);
 			//for (int j=0; j<nums.length; j++) System.out.print(nums[j]+" ");
 		}
 		return nums;
@@ -256,11 +256,11 @@ public class Sort {
 	
 	public void buildMaxHeap(int[] nums){
 		for (int i=(nums.length-1)/2; i>=0; i--)
-			AdjustHeap(nums, i, nums.length-1);
+			adjustHeap(nums, i, nums.length-1);
 		//for (int i=0; i<nums.length; i++) System.out.print(nums[i]+" ");
 	}
 	
-	public void AdjustHeap(int[] nums, int index, int margin){
+	public void adjustHeap(int[] nums, int index, int margin){
 		int left = 2*index+1;
 		int right = left+1;
 		int largestIndex = index;
@@ -270,11 +270,11 @@ public class Sort {
 			int tmp = nums[index];
 			nums[index] = nums[largestIndex];
 			nums[largestIndex] = tmp;
-			AdjustHeap(nums, largestIndex, margin);
+			adjustHeap(nums, largestIndex, margin);
 		}
 	}
 	
-	public int[] HeapSort2(int[] nums){
+	public int[] heapSort2(int[] nums){
 		int ans[] = new int[nums.length];
 		PriorityQueue<Integer> queue = new PriorityQueue<Integer>(new Comparator<Integer>(){
 			@Override
@@ -291,88 +291,75 @@ public class Sort {
 	}
 	
 	//找第k大的数 也可以用基数排序
-	public int findKth(int[] nums, int k){
+	public static int findKth(int[] nums, int k){
 	  return findKth(nums, k, 0, nums.length-1);
 	}
 
-	public int findKth(int[] nums, int k, int b, int e){
-	  if (b==e) return b;
+	public static int findKth(int[] nums, int k, int b, int e){
+	  if (b==e) return nums[b];
 	  int index = partition(nums, b, e);
 	  if (index==k) return nums[index];
-	  else if (index<k) return findKth(nums, k-index, index, e);
-	  else return findKth(nums, k, b, index);
+	  else if (index<k) return findKth(nums, k, index+1, e);
+	  else return findKth(nums, k, b, index-1);
 	}
 
-	public int partition(int[] nums, int b, int e){
+	public static int partition(int[] nums, int b, int e){
 	  int x = nums[b];
 	  int i = b;
 	  int j = e;
 	  while (i<j){
-		 while (i<j && nums[i]<x) i++;
-		 if (i<j) { nums[i] = nums[j]; j--; }
-		 while(i<j && nums[j]>x) j++;
-		 if (i<j) { nums[j] = nums[i]; i++; }
+		 while (i<j && nums[j]>=x) j--;
+		 if (i<j) { nums[i] = nums[j]; i++; }
+		 while(i<j && nums[i]<=x) i++;
+		 if (i<j) { nums[j] = nums[i]; j--; }
 	  }
 	  	nums[i] = x;
 		return i;
 	}
 	
-	
 	public void main(int[] nums){
 		qsort(nums);
-		for (int i=0; i<nums.length; i++) System.out.print(nums[i]+" ");
-		System.out.println("");
+		myPrinter.pr(nums);
 		
 		qsort2(nums);
-		for (int i=0; i<nums.length; i++) System.out.print(nums[i]+" ");
-		System.out.println("");
+		myPrinter.pr(nums);
 		
-		int[] ans = radixSort(nums);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
+		myPrinter.pr(radixSort(nums));
 		
-		ans = countSort(nums);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
-		
-
+		myPrinter.pr(countSort(nums));
 	}
 	
 	public static void main(String[] args){
 		int[] nums = new int[]{1,3,7,5,2};
 		Sort test = new Sort();
 		int[] ans = test.selectionSort(nums);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
+		myPrinter.pr(ans);
 		
 		qsort2(nums);
 		ans = test.insertionSort(nums);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
+		myPrinter.pr(ans);
 		
 		qsort2(nums);
 		ans = test.bubbleSort(nums);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
+		myPrinter.pr(ans);
 		
 		qsort2(nums);
 		ans = test.mergeSort(nums);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
+		myPrinter.pr(ans);
 		
 		qsort2(nums);
 		ans = test.heapSort(nums);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
+		myPrinter.pr(ans);
 		
 		swap(nums[0], nums[1]);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
+		myPrinter.pr(ans);
 		
 		qsort2(nums);
-		ans = test.HeapSort2(nums);
-		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
-		System.out.println("");
+		ans = test.heapSort2(nums);
+		myPrinter.pr(ans);
+		
+		for (int i=0; i<ans.length; i++)
+		myPrinter.pr(findKth(ans, i));
 	}
 }
 
