@@ -27,7 +27,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mySpringMVC" target="1.5" />
-      <module name="ProjectSpingMVC" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

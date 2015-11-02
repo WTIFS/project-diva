@@ -274,7 +274,7 @@ public class Sort {
 		}
 	}
 	
-	public int[] HeapSort2(int[] nums){
+	/*public int[] HeapSort2(int[] nums){
 		int ans[] = new int[nums.length];
 		PriorityQueue<Integer> queue = new PriorityQueue<Integer>(new Comparator<Integer>(){
 			@Override
@@ -288,7 +288,7 @@ public class Sort {
 		for (int i=0; i<nums.length; i++) queue.offer(nums[i]);
 		for (int i=0; i<nums.length; i++) ans[i] = queue.poll();	
 		return ans;
-	}
+	}*/
 	
 	//找第k大的数 也可以用基数排序
 	public int findKth(int[] nums, int k){
@@ -370,7 +370,7 @@ public class Sort {
 		System.out.println("");
 		
 		qsort2(nums);
-		ans = test.HeapSort2(nums);
+		//ans = test.HeapSort2(nums);
 		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
 		System.out.println("");
 	}
