@@ -75,9 +75,11 @@ public class TestString {
 			String s_utf8 = new String(s_iso88591.getBytes("ISO8859-1"), "UTF-8");
 			System.out.println(s_utf8);
 			System.out.println("��");
+
+			System.out.println(Integer.parseInt("")); //异常
 		}
 		catch(Exception ex){
-
+			ex.printStackTrace();
 		}
 	}
 }

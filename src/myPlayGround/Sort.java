@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 import myLeetCode.ArrayListList;
 
 public class Sort {
-	
+
 	public static void swap(int a, int b){
 		a = a + b;
 		b = a - b;
