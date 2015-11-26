@@ -276,7 +276,7 @@ public class Sort {
 	
 	public int[] heapSort2(int[] nums){
 		int ans[] = new int[nums.length];
-		PriorityQueue<Integer> queue = new PriorityQueue<Integer>(new Comparator<Integer>(){
+		PriorityQueue<Integer> queue = new PriorityQueue<Integer>(10, new Comparator<Integer>(){
 			@Override
 			//默认Comparator就是这样
 			public int compare(Integer i1, Integer i2) {
@@ -319,21 +319,21 @@ public class Sort {
 	
 	public void main(int[] nums){
 		qsort(nums);
-		myPrinter.pr(nums);
+		/*myPrinter.pr(nums);
 		
 		qsort2(nums);
 		myPrinter.pr(nums);
 		
 		myPrinter.pr(radixSort(nums));
 		
-		myPrinter.pr(countSort(nums));
+		myPrinter.pr(countSort(nums));*/
 	}
 	
 	public static void main(String[] args){
 		int[] nums = new int[]{1,3,7,5,2};
 		Sort test = new Sort();
 		int[] ans = test.selectionSort(nums);
-		myPrinter.pr(ans);
+		/*myPrinter.pr(ans);
 		
 		qsort2(nums);
 		ans = test.insertionSort(nums);
@@ -357,9 +357,9 @@ public class Sort {
 		qsort2(nums);
 		ans = test.heapSort2(nums);
 		myPrinter.pr(ans);
-		
+
 		for (int i=0; i<ans.length; i++)
-		myPrinter.pr(findKth(ans, i));
+		myPrinter.pr(findKth(ans, i));*/
 		//ans = test.HeapSort2(nums);
 		for (int i=0; i<ans.length; i++) System.out.print(ans[i]+" ");
 		System.out.println("");

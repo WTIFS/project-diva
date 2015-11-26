@@ -48,6 +48,10 @@ public class TestString {
 		String chineseTest2 = "I want 金坷垃";
 		System.out.println(chineseTest + ": " + chineseTest.length());
 		System.out.println(chineseTest2 + ": " + chineseTest2.length());
+
+		String s = ",1,2,3,4,";
+		String[] cs = s.split(","); //{ , 1, 2, 3, 4}
+		for (String scs: cs) System.out.print(scs + " ");
 	}
 
 	//�ַ�����
@@ -76,7 +80,7 @@ public class TestString {
 			System.out.println(s_utf8);
 			System.out.println("��");
 
-			System.out.println(Integer.parseInt("")); //异常
+			//System.out.println(Integer.parseInt("")); //异常
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
