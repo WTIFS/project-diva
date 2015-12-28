@@ -254,8 +254,19 @@ double CompareFile(ImageInfo *image1, ImageInfo *image2){
 	std::string filepath2 = image2->dirpath + "/" + image2->filename;
 
 	/// TODO: read the file streams, and compare the file streams difference
-
-	return 1.0000;
+	// Ref: CPP FILE STREAM
+	ifstream file1(filepath1, ios::binary);
+	ifstream file2(filepath2, ios::binary);
+	int count = 0;
+	int same = 0;
+	char ch1, ch2;
+	while(!file1.eof() && !file2.eof()){
+		file1>>ch1;
+		file2>>ch2;
+		if (ch1==ch2) same++;
+		count++;
+	}
+	return (double) same / count;
 }
 
 /// comparing the two images in RGB color space
@@ -268,6 +279,9 @@ double CompareRGBImage(ImageInfo *image1, ImageInfo *image2){
 	unsigned char *rgb2 = image2->imageRGB;
 	int width	= image1->width;
 	int height	= image1->height;
+
+    int same = 0;
+    int count = 0;
 
 	double score = 1.0000;
 
@@ -282,9 +296,11 @@ double CompareRGBImage(ImageInfo *image1, ImageInfo *image2){
 
 			/// TODO: compare the difference of rgb values between rgb1 and rgb2
 			/// NOTE: each of r, g, b values are ranging from [0..255]
-
+			if (r1==r2 && g1==g2 && b1==b2) same++;
+			count++;
 		}
 	}
+	score = (double)same / count;
 
 	return score;
 }
@@ -321,7 +337,7 @@ double CompareRGBHistogram(ImageInfo *image1, ImageInfo *image2){
 			int b1 = rgb1[(i+j*width1)*3+0];
 			int g1 = rgb1[(i+j*width1)*3+1];
 			int r1 = rgb1[(i+j*width1)*3+2];
-
+			//RGBHistogram1[r1][g1][b1]++;  //COUNT FOR HISTOGRAM IMAGE 1 //16*16*16 orz
 		}
 	}
 
@@ -331,7 +347,7 @@ double CompareRGBHistogram(ImageInfo *image1, ImageInfo *image2){
 			int b2 = rgb2[(i+j*width2)*3+0];
 			int g2 = rgb2[(i+j*width2)*3+1];
 			int r2 = rgb2[(i+j*width2)*3+2];
-
+			//RGBHistogram2[r2][g2][b2]++; //COUNT FOR HISTOGRAM IMAGE 2
 		}
 	}
 
@@ -357,6 +373,8 @@ double CompareHueImage(ImageInfo *image1, ImageInfo *image2){
 	int width	= image1->width;
 	int height	= image1->height;
 
+	int same = 0;
+	int count = 0;
 	double score = 1.0000;
 
 	for(int j=0 ; j<height ; j++){
@@ -367,10 +385,11 @@ double CompareHueImage(ImageInfo *image1, ImageInfo *image2){
 			/// TODO: compare the difference of hue values between hue1 and hue2
 			/// NOTE: each of hue values are ranging from [0..360]
 			/// NOTE: You can ignore all pixels with hue value = 0
-
+			if (h1==h2) same++;
+			count++;
 		}
 	}
-
+	score = (double)same / count;
 	return score;
 }
 
