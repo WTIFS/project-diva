@@ -16,12 +16,21 @@ volatile关键字要求线程在使用变量的时候，必须马上从主内存
 此时可以使用加锁或者AtomicInteger关键字来处理
 */
 
+/*拿到锁后可以wait(), 每个wait()要有一个notify
+notify() 无参数时随机唤醒
+notifyAll() 唤醒所有
+
+Immutable Objects不可变对象 线程安全
+E.g. Java String class
+自己写不可变对象: 1.private final 2.只在构造函数里给值 3.get返回副本或不可修改对象
+*/
+
 class Counter{
 	volatile static int count = 0;
 	static int realCount = 0;
 	static AtomicInteger atomCount = new AtomicInteger();
 	
-	public static void inc(){
+	public static void inc(){//synchronized也可以加在这里
 		try{
 			 //延迟100毫秒，使得结果明显
 			Thread.sleep(100);
@@ -46,11 +55,12 @@ public class TestThread {
 				
 				@Override
 				public void run() {
-					
 					Counter.inc();
 				}
 			});
 			threads[i].start();
+			System.out.println(threads[i].getName());
+			System.out.println(threads[i].getId());
 		}
 		
 		for (int i=0; i<1000; i++){
