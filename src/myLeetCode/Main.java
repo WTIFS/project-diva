@@ -20,12 +20,12 @@ public class Main {
 		//for (int i=0; i<t.length; i++)
 			//t[i] = new TreeNode(i);
 		
-		L5LongestPalindromicSubstring test5 = new L5LongestPalindromicSubstring();
+		/*L5LongestPalindromicSubstring test5 = new L5LongestPalindromicSubstring();
 		test5.main("abc");
 		test5.main("aba");
 		test5.main("abba");
 		test5.main("abbbbbbbba");
-		test5.main("ababccbaefd");
+		test5.main("ababccbaefd");*/
 		
 		/*
 		L56MergeIntervals test56 = new L56MergeIntervals();
@@ -303,9 +303,17 @@ public class Main {
 		test125.main(s);
 		s = "race a car";
 		test125.main(s);*/
-		
 
-		
-		
+		ListNode p1 = new ListNode(1);
+		ListNode p2 = new ListNode(2);
+		ListNode p3 = new ListNode(3);
+		ListNode p4 = new ListNode(4);
+		p1.next = p2;
+		p2.next = p3;
+		p3.next = p4;
+		L382LinkedListRandomNode test382 = new L382LinkedListRandomNode(p1);
+		for (int i=0; i<1000; i++) {
+			System.out.println(test382.getRandom());
+		}
 	}
 }
