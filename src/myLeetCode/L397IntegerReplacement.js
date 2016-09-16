@@ -59,6 +59,24 @@ var integerReplacement = function(n) {
 	}
 };
 
-[8, 7, 17, 23, 33, 31].forEach(n=> {
-	console.log(integerReplacement(n));
+var integerReplacement2 = function(n) {
+    var count = 0;
+    while (n>1) {
+    	if ((n&1)==0) {
+    		count ++;
+    		console.log(n, n>>1, n/2);
+    		n = n >> 1;
+    	} else {
+    		if (n==3) return count + 2;
+    		else {
+    			n = (n&2) ? (n+1) : (n-1);
+    		}
+    		count ++;
+    	}
+    }
+    return count;
+};
+
+[8, 7, 17, 23, 33, 31, 2147483647].forEach(n=> {
+	console.log(integerReplacement(n), integerReplacement2(n));
 })
