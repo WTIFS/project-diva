@@ -59,12 +59,14 @@ public class myPermutation {
 	//	4，倒序i位置后的所有数据
 	//		3 4 7 1 2 5 6 8 9
 	//	则347125689为346987521的下一个排列
+
+	//不适用有重复数字的
 	public void fullPermutation2(int[] nums) {
 		Sort.qsort(nums);
 		do {
 			myPrinter.pr(nums);
 			int i = nums.length - 1;
-			while (i>0 && nums[i-1]>nums[i]) i--;
+			while (i>0 && nums[i-1]>=nums[i]) i--;
 			if (i==0) return;
 			int j = i;
 			while (j+1<nums.length && nums[j+1]>nums[i-1]) j++;
@@ -74,7 +76,7 @@ public class myPermutation {
 	}
 	
 	public static void main(String[] args){
-		int[] nums = new int[] {1, 2, 3, 4};
+		int[] nums = new int[] {3, 2, 1};
 		myPermutation test = new myPermutation();
 		test.fullPermutation(nums);
 		test.fullPermutation2(nums);
