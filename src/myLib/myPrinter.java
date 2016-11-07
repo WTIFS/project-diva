@@ -1,4 +1,4 @@
-package myPlayGround;
+package myLib;
 
 import java.util.List;
 

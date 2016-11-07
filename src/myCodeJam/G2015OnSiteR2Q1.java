@@ -1,11 +1,9 @@
 package myCodeJam;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 import java.util.PriorityQueue;
 
-import myPlayGround.myPrinter;
+import myLib.myPrinter;
 
 /*
  * Given 2 arrays (with same size n), calculate the largest n permutation sums
