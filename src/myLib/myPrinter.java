@@ -12,6 +12,9 @@ public class myPrinter {
 	public static void pr(int num){
 		System.out.println(num);
 	}
+	public static void pl(String s){
+		System.out.println(s);
+	}
 
 	public static void pr(List l){
 		for (int i=0; i<l.size(); i++)

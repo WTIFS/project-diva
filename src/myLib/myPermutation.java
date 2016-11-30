@@ -74,11 +74,79 @@ public class myPermutation {
 			revert(nums, i, nums.length-1);
 		} while (true);
 	}
-	
+
+	//choose k numbers from n numbers
+	//其实就是强制规定排序，必须按index从小到大排
+	//C([1, 2, 3, 4], 2) = 1C([2, 3, 4], 1) + 2C([3, 4], 1) + 3C([4], 1) //2在1后面，所以只选2后面的，放重复
+	public void combination(int[] nums, int start, int cnt, int k, int[] chosenNums) {
+		if (cnt<k) {
+			for (int i = start; i < nums.length && i + (k - cnt - 1) <= nums.length; i++) {
+				chosenNums[cnt] = nums[i];
+				combination(nums, start + 1, cnt + 1, k, chosenNums);
+			}
+		} else {
+			myPrinter.pr(chosenNums);
+		}
+	}
+
+	//全组合  利用2进制的01表示选不选中
+	public void fullCombination(int[] nums) {
+		for (int i=1; i<Math.pow(2, nums.length); i++) { //遍历1 ~ 2^n-1
+			String s = Integer.toBinaryString(i);
+			for (int j=s.length()-1; j>=0; j--) {
+				char binaryChar = s.charAt(j);
+				int binary = Character.getNumericValue(binaryChar);
+				int reflectIndex = (nums.length - s.length()) + j;
+				if (binary==1)
+					System.out.print(nums[reflectIndex] + " ");
+			}
+			myPrinter.pl("");
+		}
+	}
+
+	//	01转换法
+	/*本程序的思路是开一个数组，其下标表示1到n个数，数组元素的值为1表示其代表的数被选中，为0则没选中。
+	首先初始化，将数组前n个元素置1，表示第一个组合为前n个数。
+	然后从左到右扫描数组元素值的“10”组合，找到第一个“10”组合后将其变为“01”组合，同时将其左边的所有“1”全部移动到数组的最左端。
+	当第一个“1”移动到数组的n-m的位置，即n个“1”全部移动到最右端时，就得到了最后一个组合。*/
+	public void combination2(int[] nums, int k) {
+		int[] selected = new int[nums.length];
+		for (int i=0; i<k; i++) selected[i] = 1;
+		for (int i=0; i<k; i++) {
+			System.out.print(nums[i] + " ");
+		}
+		myPrinter.pl("");
+		while (true) {
+			for (int i=0; i<nums.length-1; i++) {
+				if (selected[i]==1 && selected[i+1]==0) {
+					swap(selected, i, i+1);
+					int cnt1 = 0;
+					for (int j=0; j<i; j++) {
+						if (selected[j]==1) cnt1++; //统计1的数量
+					}
+					for (int j=0; j<cnt1; j++) selected[j] = 1;
+					for (int j=cnt1; j<i; j++) selected[j] = 0;
+
+					for (int j=0; j<nums.length; j++) {
+						if (selected[j]==1) System.out.print(nums[j] + " ");
+					}
+					myPrinter.pl("");
+					i = -1; //i重置到起始位置
+				} else if (i==nums.length-2) return;
+			}
+		}
+	}
+
 	public static void main(String[] args){
 		int[] nums = new int[] {3, 2, 1};
 		myPermutation test = new myPermutation();
-		test.fullPermutation(nums);
-		test.fullPermutation2(nums);
+//		test.fullPermutation(nums);
+//		test.fullPermutation2(nums);
+
+		for (int k=1; k<=3; k++) {
+//			test.combination(nums, 0, 0, k, new int[k]);
+			test.combination2(nums, k);
+		}
+//		test.fullCombination(nums);
 	}
 }
