@@ -20,7 +20,7 @@ Example:
  */
 var getSum = function(a, b) {
     while (b!=0) {
-        var carrier = (a & b) * 2;
+        var carrier = (a & b) * 2; //左移1位
         a = (a ^= b);
         b = carrier;
     }

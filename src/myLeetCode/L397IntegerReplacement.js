@@ -79,4 +79,4 @@ var integerReplacement2 = function(n) {
 
 [8, 7, 17, 23, 33, 31, 2147483647].forEach(n=> {
 	console.log(integerReplacement(n), integerReplacement2(n));
-})
+});

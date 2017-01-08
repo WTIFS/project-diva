@@ -77,12 +77,12 @@ public class myPermutation {
 
 	//choose k numbers from n numbers
 	//其实就是强制规定排序，必须按index从小到大排
-	//C([1, 2, 3, 4], 2) = 1C([2, 3, 4], 1) + 2C([3, 4], 1) + 3C([4], 1) //2在1后面，所以只选2后面的，放重复
+	//C([1, 2, 3, 4], 2) = 1C([2, 3, 4], 1) + 2C([3, 4], 1) + 3C([4], 1) //2在1后面，所以只选2后面的，防重复
 	public void combination(int[] nums, int start, int cnt, int k, int[] chosenNums) {
 		if (cnt<k) {
 			for (int i = start; i < nums.length && i + (k - cnt - 1) <= nums.length; i++) {
 				chosenNums[cnt] = nums[i];
-				combination(nums, start + 1, cnt + 1, k, chosenNums);
+				combination(nums, i + 1, cnt + 1, k, chosenNums);
 			}
 		} else {
 			myPrinter.pr(chosenNums);
@@ -144,8 +144,8 @@ public class myPermutation {
 //		test.fullPermutation2(nums);
 
 		for (int k=1; k<=3; k++) {
-//			test.combination(nums, 0, 0, k, new int[k]);
-			test.combination2(nums, k);
+			test.combination(nums, 0, 0, k, new int[k]);
+//			test.combination2(nums, k);k
 		}
 //		test.fullCombination(nums);
 	}
