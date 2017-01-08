@@ -1,5 +1,7 @@
 package myPlayGround;
 
+import myLib.myPrinter;
+
 import java.util.*;
 import java.util.Stack;
 /**
@@ -10,7 +12,7 @@ public class TestReference {
     public static List change(List a){
         Set set = new HashSet(a);
         Object[] o = set.toArray();
-        a = Arrays.asList(o); //aÖ¸Ïò¸Ä±ä  ¶ÔÔ­Ê¼aÖµÎÞÓ°Ïì
+        a = Arrays.asList(o); //aÖ¸ï¿½ï¿½Ä±ï¿½  ï¿½ï¿½Ô­Ê¼aÖµï¿½ï¿½Ó°ï¿½ï¿½
         return a;
         //a = new ArrayList();
         //a.add(3);
@@ -27,7 +29,7 @@ public class TestReference {
 	public static void testStack(){
 		Stack<Integer> stack = new Stack<>();
 		Integer num = 5;
-		stack.push(num); //IntegerÈëÕ»ºóÐÞ¸ÄËüµÄÖµ Õ»Öµ²»±ä
+		stack.push(num); //Integerï¿½ï¿½Õ»ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Öµ Õ»Öµï¿½ï¿½ï¿½ï¿½
 		num = 6;
 		myPrinter.pr(stack.pop());
 		
@@ -35,7 +37,7 @@ public class TestReference {
 		TestReference test = new TestReference();
 		Point point = test.new Point(1, 1);
 		stack2.push(point);
-		point.x = 2; //pointÈëÕ»ºóÐÞ¸ÄËüµÄÖµ£¬Õ»ÖÐÊý¾Ý»á±ä ->Õ»±£´æµÄÊÇÒýÓÃ¹ØÏµ ²»ÊÇÖµµÄ¸±±¾
+		point.x = 2; //pointï¿½ï¿½Õ»ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ ->Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½Ïµ ï¿½ï¿½ï¿½ï¿½Öµï¿½Ä¸ï¿½ï¿½ï¿½
 		myPrinter.pr(new int[]{stack2.pop().x});
 		
 	}

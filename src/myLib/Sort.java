@@ -1,10 +1,8 @@
-package myPlayGround;
+package myLib;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
@@ -204,7 +202,7 @@ public class Sort {
 	public static void qsort2(int[] nums){
 		qsort2(nums, 0, nums.length-1);
 	}
-	
+
 	public static void qsort1(int[] nums, int b, int e){
     	int i=b;
     	int j=e;
@@ -219,7 +217,8 @@ public class Sort {
     	if (i-1>b) qsort1(nums, b, i-1);
     	if (i+1<e) qsort1(nums, i+1, e);
 	}
-	
+
+	//从大到小排序
 	public static void qsort2(int[] nums, int b, int e){
 		//for (int i=0; i<nums.length; i++) System.out.print(nums[i]+" ");
 		//System.out.println("\n");

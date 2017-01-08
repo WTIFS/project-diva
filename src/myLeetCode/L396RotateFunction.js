@@ -63,7 +63,6 @@ var maxRotateFunction2 = function(A) {
 		var temp = A.pop();
 		A.unshift(temp);
 	}
-	console.log(F);
 	return max;
 };
 
