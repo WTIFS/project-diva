@@ -4,7 +4,6 @@
 
 
 var fs = require("fs");
-
 var filePath1 = "A-large-practice.in";
 
 var buffer1 = fs.readFileSync(filePath1).toString();
@@ -25,14 +24,14 @@ for (A=1; A<2001; A++) {
     }
 }
 
-list.forEach(function(entry, index) {
-    entry = entry.split(' ');
+for (var index=0; index<n; index++) {
+    var entry = list[index].split(' ');
     //console.log(entry);
     A = entry[0];
     B = entry[1];
     results.push('Case #' + (index+1) + ': ' + a[A][B]);
     console.log('Case #' + (index+1) + ': ' + a[A][B]);
-});
+}
 
 fs.open("1Out.txt", "w", function(err,fd){
     var buf = new Buffer(results.join('\n'));
