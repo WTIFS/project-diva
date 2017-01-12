@@ -32,7 +32,7 @@ So the maximum value of F(0), F(1), F(2), F(3) is F(3) = 26.
  */
 
 var maxRotateFunction = function(A) {
-	//F(k+1) - F(k) = F(k) + sum - nBk[n-1]
+	//F(k+1) - F(k) = sum - nBk[n-1]
 	var n = (A ? A:[]).length;
 	var sum = 0;
 	var F = [0];
@@ -40,12 +40,12 @@ var maxRotateFunction = function(A) {
 	for (var i=0; i<n; i++) {
 		F[0] += A[i] * i;
 		sum += A[i];
-	};
+	}
 	var max = F[0];
 	for (var j=0; j<n-1; j++) {
 		F[j+1] = F[j] + sum - n * A[n-(j+1)];
 		if (F[j+1] > max) max = F[j+1];
-	};
+	}
 	console.log(F);
 	return max;
 };
