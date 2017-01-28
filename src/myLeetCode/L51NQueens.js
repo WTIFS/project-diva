@@ -45,9 +45,11 @@ var backTrack = function(results, a, row) {
         results.push(convert(a));
     } else {
         for (var i = 0; i < n; i++) {
-            a[row][i] = 1;
-            if (check(a, row, i)) backTrack(results, a, row + 1);
-            a[row][i] = 0;
+            if (check(a, row, i)) {
+                a[row][i] = 1;
+                backTrack(results, a, row + 1);
+                a[row][i] = 0;
+            }
         }
     }
 };
@@ -57,8 +59,8 @@ var check = function(a, row, col) {
     var isValid = true;
     for (var i=1; i<=row && isValid; i++) {
         if (a[(row - i)][col]) isValid = false;
-        if (col+i<n && a[(row - i) % n][col + i]) isValid = false;
-        if (col>=i && a[(row - i) % n][col - i]) isValid = false;
+        if (col+i<n && a[row - i][col + i]) isValid = false;
+        if (col>=i && a[row - i][col - i]) isValid = false;
     }
     return isValid;
 };
