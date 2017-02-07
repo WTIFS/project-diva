@@ -15,7 +15,7 @@ function ListNode(val) {
  * @return {ListNode}
  */
 var mergeKLists = function(lists) {
-    if (list.length) return divide(lists, 0, lists.length-1);
+    if (lists.length) return divide(lists, 0, lists.length-1);
     else return null;
 };
 
@@ -89,5 +89,5 @@ var link4 = new ListNode(null);
 //var link5 = mergeKLists([link1, link2, link3, link4]);
 //console.log(JSON.stringify(link5));
 
-var link6 = mergeKLists([null]);
+var link6 = mergeKLists([]);
 console.log(link6);
