@@ -1,9 +1,4 @@
-package myPlayGround;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+package myLib;
 
 public class myHashMap {
 	
@@ -13,7 +8,7 @@ public class myHashMap {
 	class Entry{
 		final String key;
 		String value;
-		Entry next;
+		Entry next; //链表
 		
 		Entry(String k, String v){
 			key = k;
