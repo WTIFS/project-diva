@@ -17,14 +17,18 @@ var myBinaryTree = require('../myLib/myBinaryTree');
 
 //前序 根左右
 var preorderTraversal = function(root) {
+    if (!root) return [];
+
     var traversal = [];
-    var queue = [root]; //用队列
+    var stack = [root];
     var currentRoot;
-    while (queue.length) {
-        currentRoot = queue.shift();
+
+    while (stack.length) {
+        currentRoot = stack.pop();
         traversal.push(currentRoot.val);
-        if (currentRoot.right) queue.unshift(currentRoot.right);
-        if (currentRoot.left) queue.unshift(currentRoot.left);
+
+        if (currentRoot.right) stack.push(currentRoot.right);
+        if (currentRoot.left) stack.push(currentRoot.left);
     }
     return traversal;
 };
