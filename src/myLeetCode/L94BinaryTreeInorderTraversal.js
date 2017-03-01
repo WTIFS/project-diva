@@ -66,7 +66,7 @@ var traverse = function(root, traversal) {
     if (root.right) traverse(root.right, traversal);
 };
 
-var root = myBinaryTree.arrayToTree([1,2,3,4,5,6]);
+var root = myBinaryTree.arrayToTree([1,2,3,4,5,6,7]);
 var traversal = inorderTraversal2(root);
 console.log(traversal);
 
