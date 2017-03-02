@@ -18,10 +18,10 @@ var treeNode = function(val, left, right) {
 var arrayToTree = function(array) {
     var b = [];
     var mid = parseInt(array.length / 2);
-    for (var i=mid; i<array.length; i++) {
-        b[i] = treeNode(array[i]);
+    for (var i=mid; i<array.length; i++) { //叶子节点
+        if (array[i]!==null) b[i] = treeNode(array[i]);
     }
-    for (var j=mid -1; j>=0; j--) {
+    for (var j=mid -1; j>=0; j--) { //根节点
         b[j] = treeNode(array[j], b[j * 2 + 1], b[j*2 + 2]);
     }
     return b[0];
