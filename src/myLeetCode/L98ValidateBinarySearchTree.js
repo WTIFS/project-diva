@@ -16,15 +16,15 @@ var myBinaryTree = require("../myLib/myBinaryTree");
 var prev;
 var isValidBST = function(root) {
     prev = null;
-    return inorderTravers(root);
+    return inorderTraverse(root);
 };
 
-var inorderTravers = function(root) {
+var inorderTraverse = function(root) {
     if (!root) return true;
-    if (!inorderTravers(root.left)) return false;
+    if (!inorderTraverse(root.left)) return false;
     if (prev!=null && prev.val>=root.val) return false;
     prev = root;
-    return (inorderTravers(root.right));
+    return (inorderTraverse(root.right));
 };
 
 var root = myBinaryTree.arrayToTree([1, 1]);
