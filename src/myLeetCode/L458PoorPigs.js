@@ -3,8 +3,7 @@
  */
 /*
  458. Poor Pigs   Add to List QuestionEditorial Solution  My Submissions
- Total Accepted: 1893
- Total Submissions: 4965
+
  Difficulty: Easy
  Contributors: yuhaowang001
  There are 1000 buckets, one and only one of them contains poison, the rest are filled with water. They all look the same. If a pig drinks that poison it will die within 15 minutes. What is the minimum amount of pigs you need to figure out which bucket contains the poison within one hour.
