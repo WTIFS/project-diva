@@ -35,7 +35,7 @@ var serialize = function(root) {
     var len = result.length;
     while (len && result[len-1]=="null") len--;
     result.splice(len);
-    return "[" + result.toString() + "]";
+    return "[" + result + "]";
 };
 
 /**
@@ -50,8 +50,24 @@ var deserialize = function(data) {
     var a = str.split(",");
     var len = a.length;
     var root = new TreeNode(Number(a[0]));
-    var b = [root];
-    var i = 0;
+    var parents = [root];
+
+    for (var i=1; i< len; i++) {
+        var parent = parents.shift();
+        if (a[i] != "null") {
+            var left = new TreeNode(Number(a[i]));
+            parent.left = left;
+            parents.push(left);
+        }
+        i++;
+        if (i<len && a[i]!="null" ) {
+            var right = new TreeNode(Number(a[i]));
+            parent.right = right;
+            parents.push(right);
+        }
+    }
+
+    /*var i = 0;
     var j = 1;
     while (i<len && j<len) {
         var left = (a[j]!="null") ? new TreeNode(Number(a[j])) : null;
@@ -62,7 +78,7 @@ var deserialize = function(data) {
         i ++;
         while (i<len && b[i]==null) i++;
         j += 2;
-    }
+    }*/
 
     return root;
 };
