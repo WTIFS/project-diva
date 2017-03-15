@@ -4,6 +4,10 @@
 module.exports = {
     arrayToTree: function(array) {
         return arrayToTree(array);
+    },
+
+    deserialize: function(a) {
+        return deserialize(a);
     }
 };
 
@@ -25,6 +29,29 @@ var arrayToTree = function(array) {
         b[j] = treeNode(array[j], b[j * 2 + 1], b[j*2 + 2]);
     }
     return b[0];
+};
+
+var deserialize = function(a) {
+    if (!a || !a.length) return null;
+    var len = a.length;
+    var root = new treeNode(a[0]);
+    var parents = [root];
+
+    for (var i=1; i< len; i++) {
+        var parent = parents.shift();
+        if (a[i] != null) {
+            var left = new treeNode(a[i]);
+            parent.left = left;
+            parents.push(left);
+        }
+        i++;
+        if (i<len && a[i]!=null ) {
+            var right = new treeNode(a[i]);
+            parent.right = right;
+            parents.push(right);
+        }
+    }
+    return root;
 };
 
 //var testArray = arrayToTree([1,2,3,4,5,6]);
