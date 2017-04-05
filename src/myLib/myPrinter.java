@@ -19,6 +19,10 @@ public class myPrinter {
 		System.out.println(s);
 	}
 
+    public static void pl(boolean s){
+		System.out.println(s);
+	}
+
 	public static void pr(List l){
 		for (int i=0; i<l.size(); i++)
 			System.out.print(l.get(i) + " ");
