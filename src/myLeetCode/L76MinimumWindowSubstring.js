@@ -44,15 +44,14 @@ var minWindow = function(s, t) {
             leftMatches[c] --;
         }
         while (leftCount==0) { //t中各字母全部匹配  挨个++begin 寻找最小window size
+            while (!leftMatches.hasOwnProperty(s[begin])) begin++;
             var d = i - begin + 1;
             if (d<windowSize) {
                 windowSize = d;
                 head = begin;
             }
-            if (leftMatches.hasOwnProperty(s[begin])) {
-                if (leftMatches[s[begin]]==0) leftCount ++;
-                leftMatches[s[begin]] ++;
-            }
+            if (leftMatches[s[begin]]==0) leftCount ++;
+            leftMatches[s[begin]] ++;
             begin ++;
         }
     }
