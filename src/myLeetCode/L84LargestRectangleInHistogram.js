@@ -40,20 +40,21 @@ var largestRectangleArea = function(heights) {
             // with stack top as the smallest (or minimum height) bar. 'i' is
             // 'right index' for the top and element before top in stack is 'left index'
             tp = stack.pop();
-            area = tp * (stack.length==0? i: i - heights[heights.length-1] - 1);
+            area = heights[tp] * (stack.length==0? i: i - stack[stack.length-1] - 1);
             if (area>maxArea) maxArea = area;
         }
     }
 
     while (stack.length) {
         tp = stack.pop();
-        area = tp * (stack.length==0? i: i - heights[heights.length-1] - 1);
+        area = heights[tp] * (stack.length==0? i: i - stack[stack.length-1] - 1);
         if (area>maxArea) maxArea = area;
     }
 
     return maxArea;
 };
 
+console.log(largestRectangleArea([2, 0, 2]));
 console.log(largestRectangleArea([3,2,1]));
 //console.log(largestRectangleArea([2, 1, 2]));
 //console.log(largestRectangleArea([1, 1]));
