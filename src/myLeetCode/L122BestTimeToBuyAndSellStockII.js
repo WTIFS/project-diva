@@ -15,12 +15,13 @@
  */
 var maxProfit = function(prices) {
     if (!prices.length) return 0;
-    var min = prices[0];
     var max = 0;
-    prices.forEach(function(price) {
-        if (price<min) min = price;
-        if (price - min > max) max = price - min;
-    });
+    for (var i=0; i<prices.length; i++) {
+        var j = i;
+        while (j+1<prices.length && prices[j+1]>=prices[j]) j++;
+        max += Math.max(0, prices[j] - prices[i]);
+        i = j;
+    }
     return max;
 };
 
