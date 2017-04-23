@@ -19,6 +19,7 @@ var treeNode = function(val, left, right) {
     }
 };
 
+//完全二叉树
 var arrayToTree = function(array) {
     var b = [];
     var mid = parseInt(array.length / 2);
