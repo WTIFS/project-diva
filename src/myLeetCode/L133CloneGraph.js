@@ -50,6 +50,7 @@ var cloneGraph = function(graph) {
         p.neighbors.forEach(function(neighbor) {
             if (!map[neighbor.label]) {
                 var copy = new UndirectedGraphNode(neighbor.label);
+                q.neighbors.push(copy);
                 toVisit.push(neighbor);
                 copiesToVisit.push(copy);
                 map[neighbor.label] = copy;
@@ -67,4 +68,4 @@ var c = new UndirectedGraphNode(2);
 a.neighbors = [b, c];
 b.neighbors = [c];
 c.neighbors = [c];
-console.log(JSON.stringify(cloneGraph(a), null, 2));
+cloneGraph(a);
