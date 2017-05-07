@@ -25,44 +25,58 @@ E.g. Java String class
 自己写不可变对象: 1.private final 2.只在构造函数里给值 3.get返回副本或不可修改对象
 */
 
-class Counter{
-	volatile static int count = 0;
-	static int realCount = 0;
-	static AtomicInteger atomCount = new AtomicInteger();
-	
-	public static void inc(){//synchronized也可以加在这里
-		try{
-			 //延迟100毫秒，使得结果明显
-			Thread.sleep(100);
-		}
-		catch(InterruptedException e){}
-		count++;
-		atomCount.incrementAndGet();
-		synchronized (Counter.class){
-			realCount++;
-		}
-	}
-}
+
 
 public class TestThread {
 	public static void main(String[] args){
-		
-		Thread threads[]=new Thread[1000];
-		
+
+        final Counter a = new Counter();
+        final Counter b = new Counter();
+
+        Runnable runnable1 = new Runnable() {
+            @Override
+            public void run() {
+                Counter.inc();
+                a.inc2();
+            }
+        };
+
+        Runnable runnable2 = new Runnable() {
+            @Override
+            public void run() {
+                Counter.inc();
+                b.inc2();
+            }
+        };
+
+        Thread thread1 = new Thread(runnable1);
+        Thread thread2 = new Thread(runnable2);
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (Exception e) {
+
+        }
+		/*Thread threads[]=new Thread[1000];
+
 		//同时启动1000个线程，去进行i++计算，看看实际结果
 		for (int i=0; i<1000; i++){
 			threads[i] = new Thread(new Runnable() {
-				
+
 				@Override
 				public void run() {
-					Counter.inc();
+					Counter.inc2();
 				}
 			});
 			threads[i].start();
 			System.out.println(threads[i].getName());
 			System.out.println(threads[i].getId());
 		}
-		
+
 		for (int i=0; i<1000; i++){
 			try{
 				// join() 方法主要是让调用改方法的thread完成run方法里面的东西后， 再执行join()方法后面的代码
@@ -72,7 +86,7 @@ public class TestThread {
 			catch(InterruptedException e){
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		System.out.println("Counter.count=" + Counter.count);
 		System.out.println("Counter.realCount=" + Counter.realCount);
