@@ -14,6 +14,7 @@ var Queue = function(capacity) {
     this.cnt = 0;
 };
 
+//O(N)
 Queue.prototype.push = function(num) {
     if (this.cnt==this.capacity) {
         console.log("OVERFLOW");
@@ -25,6 +26,7 @@ Queue.prototype.push = function(num) {
     console.log(this);
 };
 
+//O(N)
 Queue.prototype.pull = function() {
     if (this.cnt==0) {
         console.log("EMPTY QUEUE");
