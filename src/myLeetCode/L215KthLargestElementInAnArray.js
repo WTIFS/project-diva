@@ -11,12 +11,58 @@
  You may assume k is always valid, 1 ≤ k ≤ array's length.
  */
 
+var findKthLargest = function(nums, k) {
+    heapSort(nums);
+    return nums[k-1];
+};
+
+var heapSort = function(nums) {
+    initMinHeap(nums);
+    for (var i=nums.length-1; i>0; i--) {
+        swap(nums, 0, i);
+        swapRoot(nums, i-1);
+    }
+};
+
+var initMinHeap = function(nums) {
+    for (var r = parseInt((nums.length-2)/2); r>=0; r--) {
+        var i = r;
+        while (i<=parseInt((nums.length-2)/2)) {
+            var left = 2*i +1 ;
+            var right = 2*i + 2;
+            var smallestIndex = i;
+            if (left<nums.length && nums[left]<nums[smallestIndex]) smallestIndex = left;
+            if (right<nums.length && nums[right]<nums[smallestIndex]) smallestIndex = right;
+            if (smallestIndex != i) {
+                swap(nums, i, smallestIndex);
+                i = smallestIndex;
+            } else break;
+        }
+    }
+};
+
+var swapRoot = function(nums, marginIndex) {
+    var r = 0;
+    while (r<=parseInt((marginIndex-1)/2)) {
+        var left = 2 * r + 1;
+        var right = 2 * r + 2;
+        var smallestIndex = r;
+        if (left<=marginIndex && nums[left]<nums[smallestIndex]) smallestIndex = left;
+        if (right<=marginIndex && nums[right]<nums[smallestIndex]) smallestIndex = right;
+        if (smallestIndex != r) {
+            swap(nums, r, smallestIndex);
+            r = smallestIndex;
+        } else break;
+
+    }
+};
+
 /**
  * @param {number[]} nums
  * @param {number} k
  * @return {number}
  */
-var findKthLargest = function(nums, k) {
+var findKthLargest2 = function(nums, k) {
     return findKth(nums, k-1, 0, nums.length-1);
 };
 
@@ -54,3 +100,4 @@ var swap = function(nums, i, j) {
 
 var nums = [0,1,2,3,4,5,6,7,8,9];
 for (var i=1; i<=10; i++) console.log(findKthLargest(nums, i));
+
