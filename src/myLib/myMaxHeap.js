@@ -28,10 +28,10 @@ MaxHeap.prototype.pop = function() {
     swap(nums, 0, n-1);
     nums.pop();
     n--;
-    var r = 0;
+    var i = 0;
     var largestIndex = 0;
-    while (r<=parseInt(n-1)/2) {
-        var left = 2*r + 1;
+    while (i<=parseInt((n-1)/2)) {
+        var left = 2*i + 1;
         var right = left + 1;
         if (left<n && nums[left]>nums[largestIndex]) largestIndex = left;
         if (right<n && nums[right]>nums[largestIndex]) largestIndex = right;
@@ -77,3 +77,13 @@ var swap = function(nums, a, b) {
 module.exports = new MaxHeap();
 
 
+var myMaxHeap = new MaxHeap();
+for (var i=0; i<10; i++) {
+    myMaxHeap.push(i);
+    console.log(myMaxHeap.nums);
+}
+
+for (var j=0; j<10; j++) {
+    myMaxHeap.pop();
+    console.log(myMaxHeap.nums);
+}
