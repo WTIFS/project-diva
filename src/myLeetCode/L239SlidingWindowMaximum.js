@@ -48,5 +48,52 @@ var maxSlidingWindow = function(nums, k) {
 };
 
 
+var Node = function(val, cnt) {
+    this.val = val;
+    this.count = cnt;
+};
+
+//单调递增数组
+var MonoQueue = function() {
+    this.queue = [];
+};
+
+MonoQueue.prototype.push = function(num) {
+    var candidates = this.queue;
+    var newCandidate = new Node(num, 1);
+    while (candidates.length && num >= candidates[candidates.length-1].val) {
+        newCandidate.count += candidates.pop().count;
+    }
+    candidates.push(newCandidate);
+};
+
+MonoQueue.prototype.shift = function() {
+    var candidates = this.queue;
+    if (candidates.length) {
+        if (candidates[0].count>1) candidates[0].count--;
+        else candidates.shift();
+    }
+};
+
+MonoQueue.prototype.getMax = function() {
+    return this.queue[0].val;
+};
+
+var maxSlidingWindow2 = function(nums, k) {
+    var candidates = new MonoQueue();
+    var result = [];
+    for (var i=0; i<k; i++) candidates.push(nums[i]);
+    result.push(candidates.getMax());
+    for (var j=k; j<nums.length; j++) {
+        candidates.push(nums[j]);
+        candidates.shift();
+        result.push(candidates.getMax());
+    }
+    return result;
+};
+
+
 console.log(maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3));
+console.log(maxSlidingWindow2([1, 3, -1, -3, 5, 3, 6, 7], 3));
 console.log(maxSlidingWindow([1,3,1,2,0,5], 3));
+console.log(maxSlidingWindow2([1,3,1,2,0,5], 3));
