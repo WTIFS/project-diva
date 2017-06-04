@@ -18,7 +18,7 @@
  * @param {string[]} wordDict
  * @return {string[]}
  */
-    
+
 var wordBreak = function(s, wordDict) {
     var wordMap = {};
     wordDict.forEach(function(word) {
