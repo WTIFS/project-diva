@@ -8,6 +8,29 @@ var MaxHeap = function() {
 };
 
 
+
+
+
+MaxHeap.prototype.init = function() {
+    var nums = this.nums;
+    var n = nums.length;
+    for (var r = parseInt((n-1)/2); r>=0; r--) { //root = last parent -> 0
+        var i = r;
+        var largestIndex = i;
+        while (i<n) {
+            var left = 2*i + 1;
+            var right = left + 1;
+            if (left<n && nums[left]>nums[largestIndex]) largestIndex = left;
+            if (right<n && nums[right]>nums[largestIndex]) largestIndex = right;
+            if (largestIndex != i) {
+                swap(nums, i, largestIndex);
+                i = largestIndex;
+            } else break;
+        }
+    }
+};
+
+
 MaxHeap.prototype.push = function(num) {
     var nums = this.nums;
     nums.push(num);
@@ -44,29 +67,18 @@ MaxHeap.prototype.pop = function() {
 };
 
 
-MaxHeap.prototype.init = function() {
-    var nums = this.nums;
-    var n = nums.length;
-    for (var r = parseInt((n-1)/2); r>=0; r--) { //root = last parent -> 0
-        var i = r;
-        var largestIndex = i;
-        while (i<n) {
-            var left = 2*i + 1;
-            var right = left + 1;
-            if (left<n && nums[left]>nums[largestIndex]) largestIndex = left;
-            if (right<n && nums[right]>nums[largestIndex]) largestIndex = right;
-            if (largestIndex != i) {
-                swap(nums, i, largestIndex);
-                i = largestIndex;
-            } else break;
-        }
-    }
-};
-
-
 MaxHeap.prototype.setNums = function(args) {
     this.nums = args;
 };
+
+
+MaxHeap.prototype.top = function() {
+    var nums = this.nums;
+    if (nums.length) return nums[0];
+    else return null;
+};
+
+
 
 var swap = function(nums, a, b) {
     var tmp = nums[a];
