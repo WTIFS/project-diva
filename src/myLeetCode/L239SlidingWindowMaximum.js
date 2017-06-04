@@ -31,70 +31,22 @@
  */
 var maxSlidingWindow = function(nums, k) {
     var n = nums.length;
-    var maxHeap = new MaxHeap();
+    var candidates = [];
     var result = [];
-    for (var i=0; i<k; i++) maxHeap.push(nums[i]);
-    result.push(maxHeap.top());
-    for (var offset=0; offset<n-k; offset++) {
-        maxHeap.pop();
-        maxHeap.push(nums[k+offset]);
-        result.push(maxHeap.top());
+    for (var i=0; i<n; i++) {
+        if (candidates.length && candidates[0]<i-k+1)  //window range: i-k+1 ~ i, len = k; remove indices less than i-k+1
+            candidates.shift();
+
+        while (candidates.length && nums[i] >= nums[candidates[candidates.length-1]]) //new num is larger than former nums, delete the former nums as they won't be the max
+            candidates.pop();
+
+        candidates.push(i);
+
+        if (i>=k-1) result.push(nums[candidates[0]]);
     }
     return result;
 };
 
-var MaxHeap = function() {
-    this.nums = [];
-};
 
-MaxHeap.prototype.push = function(num) {
-    var nums = this.nums;
-    nums.push(num);
-    var i = nums.length - 1;
-    while (i>0) {
-        var r = parseInt((i-1) / 2);
-        if (nums[i]>nums[r]) {
-            swap(nums, i, r);
-            i = r;
-        } else break;
-    }
-};
-
-
-MaxHeap.prototype.pop = function() {
-    var nums = this.nums;
-    var n = nums.length;
-    swap(nums, 0, n-1);
-    nums.pop();
-    n--;
-    var i = 0;
-    var largestIndex = 0;
-    while (i<=parseInt((n-1)/2)) {
-        var left = 2*i + 1;
-        var right = left + 1;
-        if (left<n && nums[left]>nums[largestIndex]) largestIndex = left;
-        if (right<n && nums[right]>nums[largestIndex]) largestIndex = right;
-        if (largestIndex != i) {
-            swap(nums, i, largestIndex);
-            i = largestIndex;
-        } else break;
-    }
-};
-
-
-MaxHeap.prototype.top = function() {
-    var nums = this.nums;
-    if (nums.length) return nums[0];
-    else return null;
-};
-
-
-MaxHeap.prototype.setNums = function(args) {
-    this.nums = args;
-};
-
-var swap = function(nums, a, b) {
-    var tmp = nums[a];
-    nums[a] = nums[b];
-    nums[b] = tmp;
-};
+console.log(maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3));
+console.log(maxSlidingWindow([1,3,1,2,0,5], 3));
