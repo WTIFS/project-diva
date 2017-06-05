@@ -10,7 +10,7 @@
  Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
 
  //a^a = 0, 所以异或一遍nums，再异或一遍0-n，相同的会被消除，剩下的即为result
- 
+
  */
 
 /**
