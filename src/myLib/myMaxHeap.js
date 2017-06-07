@@ -71,6 +71,10 @@ MaxHeap.prototype.setNums = function(args) {
     this.nums = args;
 };
 
+MaxHeap.prototype.size = function() {
+    return this.nums.length;
+};
+
 
 MaxHeap.prototype.top = function() {
     var nums = this.nums;

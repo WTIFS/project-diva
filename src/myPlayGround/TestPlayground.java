@@ -18,6 +18,9 @@ public class TestPlayground {
         queue.offer(3);
         queue.offer(2);
         queue.offer(4);
+        queue.offer(6);
+        queue.offer(5);
+        queue.offer(7);
         while (!queue.isEmpty()) System.out.println(queue.poll());
 
         list = new ArrayList<>();
