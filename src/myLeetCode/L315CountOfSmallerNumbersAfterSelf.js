@@ -19,13 +19,13 @@
  * @return {number[]}
  */
 var countSmaller = function(nums) {
-    var sortedList = [];
+    var sortedList = []; //插入排序，重新排序后的nums
     var results = [];
     var n = nums.length;
-    for (var j = n-1; j>=0; j--) {
-        var insertPosition = searchInsertPosition(sortedList, nums[j]);
+    for (var j = n-1; j>=0; j--) { //从后向前
+        var insertPosition = searchInsertPosition(sortedList, nums[j]); //确定插排的位置
         sortedList.splice(insertPosition, 0, nums[j]);
-        results[j] = insertPosition;
+        results[j] = insertPosition; //插排的索引即表示它前面有几个数字
     }
     return results;
 };
