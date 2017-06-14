@@ -10,6 +10,9 @@
  Note:
  You may assume all input has valid answer.
 
+ //通用方法:
+ O(Nlgn)先排序，然后从中间切成两半，依次取一个大的一个小的
+
  Follow Up:
  Can you do it in O(n) time and/or in-place with O(1) extra space?
  */
