@@ -20,6 +20,11 @@ var isPowerOfThree = function(n) {
     return n? ((Math.log10(n) / Math.log10(3)) % 1)==0: false;
 };
 
+
+var isPowerOfThree2 = function(n) {
+    return Math.log10(parseInt(n.toString(3))) % 1==0;
+};
+
 var num = [1, 3, 9, 27, 81, 243, 244];
 num.forEach(n=>{
     console.log(isPowerOfThree(n));
