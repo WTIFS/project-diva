@@ -33,13 +33,13 @@ function ListNode(val) {
  */
 var reverseKGroup = function(head, k) {
     var p = head;
-    for (var i=0; i<k; i++) {
+    for (var i=0; i<k; i++) { //先判断够不够k个
         if (!p) return head;
         p = p.next;
     }
     var last = head;
     p = head.next;
-    for (var j=1; j<k; j++) {
+    for (var j=1; j<k; j++) { //从1开始 因为head不用转
         var next = p.next;
         p.next = last;
         last = p;
