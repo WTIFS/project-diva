@@ -11,6 +11,7 @@
  You may assume k is always valid, 1 ≤ k ≤ array's length.
  */
 
+//堆排 O(n)
 var findKthLargest = function(nums, k) {
     heapSort(nums);
     return nums[k-1];
@@ -62,6 +63,7 @@ var swapRoot = function(nums, marginIndex) {
  * @param {number} k
  * @return {number}
  */
+//和快排相同的思路 比某个数小的放左边 大的放右边 O(n^2)
 var findKthLargest2 = function(nums, k) {
     return findKth(nums, k-1, 0, nums.length-1);
 };
@@ -92,12 +94,92 @@ var findKth = function(nums, k, start, end) {
 
 };
 
+
+/**
+ * @param nums
+ * @param k
+
+ */
+var findKthLargest3 = function(nums, k) {
+    var indexOfKthLargestNum = BFPRT(nums, 0, nums.length-1, k);
+    return nums[indexOfKthLargestNum];
+};
+
+/**
+ BFPRT算法步骤如下：
+ （1）：选取主元；
+   （1.1）：将n个元素划分为⌊n/5⌋个组，每组5个元素，若有剩余，舍去；
+   （1.2）：使用插入排序找到⌊n/5⌋个组中每一组的中位数； O(n)
+   （1.3）：对于（1.2）中找到的所有中位数，调用BFPRT算法求出它们的中位数，作为主元；O(n/5)
+ （2）：以（1.3）选取的主元为分界点，把小于主元的放在左边，大于主元的放在右边；O(n)
+ （3）：判断主元的位置与k的大小，有选择的对左边或右边递归。<=O(7n/10)
+ 总时间复杂度O(n)
+ */
+//返回第k大数字的下标
+var BFPRT = function(nums, left, right, k) {
+    if (left == right) return left;
+    var median = getMedian(nums, left, right); //中位数
+    var medianIndex = partition(nums, left, right, median); //按中位数划分数组, 并返回划分后的中位数下标
+    var relativeMedianRank = medianIndex - left + 1; //中位数的排名
+    if (k==relativeMedianRank) return medianIndex; //中位数就是第k大的
+    else if (k<relativeMedianRank) return BFPRT(nums, left, medianIndex-1, k); //在left-medianIndex之间找第k大的
+    else return BFPRT(nums, medianIndex+1, right, k-relativeMedianRank);
+};
+
+//插排并获取中位数下标
+var insertSort = function(nums, left, right) {
+    for (var i=left+1; i<=right; i++) {
+        var j = i-1;
+        var tmp = nums[i];
+        while (nums[j]<tmp && j>=left) {
+            nums[j+1] = nums[j];
+            j--;
+        }
+        nums[j+1] = tmp;
+    }
+    return parseInt((left + (right-left)/2));
+};
+
+var getMedian = function(nums, left, right) {
+    if (right-left<5) return nums[insertSort(nums, left, right)];
+    var medians = []; //空间开销O(n), 如果要削减空间开销, 可以把所有中位交换到nums的头部并记录其长度
+    for (var i = left; i+4<=right; i+=5) {
+        var medianIndex = insertSort(nums, i, i+4);
+        medians.push(nums[medianIndex]);
+    }
+    var medianOfMediansIndex = BFPRT(medians, 0, medians.length-1, parseInt((medians.length+1)/2));
+    return medians[medianOfMediansIndex];
+};
+
+//小于median的放左边, 大于的放右边, 返回切分后median的index
+var partition = function(nums, left, right, median) {
+    var leftPointer = left;
+    for (var i=left; i<=right; i++) {
+        if (nums[i]>median) {
+            swap(nums, leftPointer, i);
+            leftPointer++;
+        } else if (nums[i]==median) swap(nums, i, right);
+    }
+    swap(nums, leftPointer, right);
+    return leftPointer;
+};
+
 var swap = function(nums, i, j) {
     var tmp = nums[i];
     nums[i] = nums[j];
     nums[j] = tmp;
 };
 
-var nums = [0,1,2,3,4,5,6,7,8,9];
-for (var i=1; i<=10; i++) console.log(findKthLargest(nums, i));
+var nums = [];
+
+nums = [0,1,2,3,4,5,6,7,8,9];
+console.log(findKthLargest3(nums, 4));
+
+for (var i=1; i<=10; i++){
+    nums = [0,1,2,3,4,5,6,7,8,9];
+    console.log(findKthLargest(nums, i));
+
+    nums = [0,1,2,3,4,5,6,7,8,9];
+    console.log(findKthLargest3(nums, i));
+}
 
