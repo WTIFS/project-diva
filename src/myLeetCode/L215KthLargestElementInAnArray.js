@@ -116,7 +116,7 @@ var findKthLargest3 = function(nums, k) {
  总时间复杂度T(n)= T(n/5) + T(7n/10) + O(n) => T(n) = O(10n) 最坏情况下也是O(n)级别
  因为每次用中位数的中位数分割, 最坏情况下也能至少分割3/10的数据出去
  */
-    
+
 //返回第k大数字的下标
 var BFPRT = function(nums, left, right, k) {
     if (left == right) return left;
@@ -158,7 +158,7 @@ var partition = function(nums, left, right, medianIndex) {
     var median = nums[medianIndex];
     swap(nums, medianIndex, right); //把中位数和right互换 这样无论左侧怎么换,都不会影响最右median的位置
 
-    var divideIndex = left; //divideIndex
+    var divideIndex = left; //divideIndex记录划分点
     for (var i=left; i<right; i++) {
         if (nums[i]>median) {
             swap(nums, divideIndex, i);
