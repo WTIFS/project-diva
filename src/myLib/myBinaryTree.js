@@ -55,5 +55,9 @@ var deserialize = function(a) {
     return root;
 };
 
-//var testArray = arrayToTree([1,2,3,4,5,6]);
-//console.log(JSON.stringify(testArray, null, 4));
+// var testArray = [1,2,3,4,5,null,6,7];
+// var result = arrayToTree(testArray);
+// console.log(JSON.stringify(result, null, 4));
+
+// result = deserialize(testArray);
+// console.log(JSON.stringify(result, null, 4));
