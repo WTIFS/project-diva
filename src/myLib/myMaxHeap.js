@@ -38,7 +38,7 @@ MaxHeap.prototype.push = function(num) {
     while (i>0) {
         var r = parseInt((i-1) / 2);
         if (nums[i]>nums[r]) {
-            swap(nums, i, r);
+            swap(nums, i, r); //上浮不影响原有父子大小关系, 可以放心上浮
             i = r;
         } else break;
     }
@@ -58,7 +58,7 @@ MaxHeap.prototype.pop = function() {
         var right = left + 1;
         if (left<n && nums[left]>nums[largestIndex]) largestIndex = left;
         if (right<n && nums[right]>nums[largestIndex]) largestIndex = right;
-        if (largestIndex != i) {
+        if (largestIndex != i) { //必须挑最大的下沉, 才能保证新的父子关系是对的
             swap(nums, i, largestIndex);
             i = largestIndex;
         } else break;
