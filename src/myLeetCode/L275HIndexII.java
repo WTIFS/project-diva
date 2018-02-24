@@ -2,9 +2,6 @@ package myLeetCode;
 
 import java.util.Arrays;
 
-import javax.xml.stream.events.EndDocument;
-
-import com.sun.org.apache.xpath.internal.operations.And;
 
 public class L275HIndexII {
 	public int hIndex(int[] citations) {

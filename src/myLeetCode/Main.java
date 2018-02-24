@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import myLeetCode.L56MergeIntervals.Interval;
-
-import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
 import myLib.myPrinter;
 
 public class Main {
