@@ -9,7 +9,7 @@
 
  Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
 
- 和L297二叉树序列化相似, 但BST有个性质: 中序遍历时结果为 根 (小于根的部分) (大于根的部分), 根据这个特性, 可以直接用中序遍历序列化和反序列化
+ 和L297二叉树序列化相似, 但BST有个性质: 先序遍历时结果为 根 (小于根的部分) (大于根的部分), 根据这个特性, 可以直接用中序遍历序列化和反序列化
 
  */
 
