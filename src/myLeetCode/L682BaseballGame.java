@@ -47,36 +47,6 @@ public class L682BaseballGame {
 
     public static int calPoints(String[] ops) {
         LinkedList<Integer> list = new LinkedList<>();
-        for (String s: ops) {
-            switch (s) {
-                case "C": {
-                    list.removeLast();
-                    break;
-                }
-                case "D": {
-                    list.add(list.getLast() * 2);
-                    break;
-                }
-                case "+": {
-                    list.add(list.get(list.size()-2) + list.getLast());
-                    break;
-                }
-                default: {
-                    list.add(Integer.parseInt(s));
-                    break;
-                }
-            }
-        }
-
-        int sum = 0;
-        for (int score: list) {
-            sum += score;
-        }
-        return sum;
-    }
-
-    public static int calPoints2(String[] ops) {
-        LinkedList<Integer> list = new LinkedList<>();
         int sum = 0;
         for (String s: ops) {
             switch (s) {
