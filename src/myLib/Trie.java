@@ -1,11 +1,11 @@
 package myLib;
 
-public class Tier {
+public class Trie {
     public int count;
-    public Tier[] alphbet;
+    public Trie[] alphbet;
 
-    public Tier() {
-        alphbet = new Tier[26];
+    public Trie() {
+        alphbet = new Trie[26];
         count = 1;
     }
 
@@ -13,12 +13,12 @@ public class Tier {
         for (int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
             if (alphbet[c-'a']==null) alphbet[c-'a'].count++;
-            else alphbet[c-'a'] = new Tier();
+            else alphbet[c-'a'] = new Trie();
         }
     }
 
     public boolean search(String s) {
-        Tier root = this;
+        Trie root = this;
         for (int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
             if (root.alphbet[c-'a']==null) return false;

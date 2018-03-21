@@ -31,39 +31,46 @@ package myLeetCode;
 
  */
 
-class Solution {
-    public int[] findRedundantConnection(int[][] edges) {
-        int[] parents = new int[2001];
-        for (int i=0; i<2001; i++) parents[i] = i;
-        for (int[] edge: edges) {
-            int s = edge[0];
-            int e = edge[1];
-            int rootOfS = find(parents, s);
-            int rootOfE = find(parents, e);
-            if (rootOfS == rootOfE) return edge;
-            else parents[rootOfE] = rootOfS;
-        }
-        return new int[2];
-    }
+/**
+ 并查集
+ http://blog.csdn.net/u013546077/article/details/64509038
+ */
 
-    //找根节点
-    private int find(int[] parents, int num) {
-        int root = num;
-        while (parents[root] != root) root = parents[root];
 
-        //路径压缩
-        //把找根路径上的parent全部更新为root
-        int i = num;
-        while (parents[i] != root) {
-            int tmp = parents[i];
-            parents[i] = root;
-            i = tmp;
-        }
-        return root;
-    }
-}
 
 public class L684RedundantConnection {
+
+    static class Solution {
+        public int[] findRedundantConnection(int[][] edges) {
+            int[] parents = new int[2001];
+            for (int i=0; i<2001; i++) parents[i] = i;
+            for (int[] edge: edges) {
+                int s = edge[0];
+                int e = edge[1];
+                int rootOfS = find(parents, s);
+                int rootOfE = find(parents, e);
+                if (rootOfS == rootOfE) return edge;
+                else parents[rootOfE] = rootOfS;
+            }
+            return new int[2];
+        }
+
+        //找根节点
+        private int find(int[] parents, int num) {
+            int root = num;
+            while (parents[root] != root) root = parents[root];
+
+            //路径压缩
+            //把找根路径上的parent全部更新为root
+            int i = num;
+            while (parents[i] != root) {
+                int tmp = parents[i];
+                parents[i] = root;
+                i = tmp;
+            }
+            return root;
+        }
+    }
 
     public static void main(String[] args) {
         int[][] edges = new int[][] {new int[]{1,2}, new int[]{1,3},  new int[]{2,3} };
@@ -80,7 +87,6 @@ public class L684RedundantConnection {
         edge = new Solution().findRedundantConnection(edges);
         System.out.println(edge[0]);
         System.out.println(edge[1]);
-
 
     }
 
