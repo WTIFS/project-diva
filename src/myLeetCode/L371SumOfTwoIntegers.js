@@ -20,8 +20,8 @@ Example:
  */
 var getSum = function(a, b) {
     while (b!=0) {
-        var carrier = (a & b) * 2; //左移1位
-        a = (a ^= b);
+        var carrier = (a & b) << 1; //左移1位  //相同表示进位
+        a ^= b; //异或结果留在原位
         b = carrier;
     }
     return a;
