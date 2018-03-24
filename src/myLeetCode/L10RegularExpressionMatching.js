@@ -30,7 +30,7 @@
  if p[j-1]=='.'
     a[i][j] = a[i-1][j-1]
  if p[j-1]=='*'
-    if s[i-1] !+ p[j-2]
+    if s[i-1] != p[j-2]
         a[i][j] = a[i][j-2]       //a* as null
     else
         a[i][j] = a[i][j-2]    //a* as null

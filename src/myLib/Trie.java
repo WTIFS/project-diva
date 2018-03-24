@@ -12,7 +12,7 @@ public class Trie {
     public void add(String s) {
         for (int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
-            if (alphbet[c-'a']==null) alphbet[c-'a'].count++;
+            if (alphbet[c-'a']!=null) alphbet[c-'a'].count++;
             else alphbet[c-'a'] = new Trie();
         }
     }
@@ -24,6 +24,6 @@ public class Trie {
             if (root.alphbet[c-'a']==null) return false;
             else root = root.alphbet[c-'a']; //向下
         }
-        return true;
+        return root.count>0;
     }
 }
