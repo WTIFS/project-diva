@@ -28,21 +28,17 @@ package myLeetCode;
 public class L696CountBinarySubstrings {
 
     static public int countBinarySubstrings(String s) {
-        if (s.length()==0) return 0;
+        if (s.length()<2) return 0;
         int result = 0;
-        int j = 0;
-        while (j+1<s.length() && s.charAt(j+1) == s.charAt(j)) j++;
-        if (j==s.length()) return 0;
         int countOfA = 0;
-        int countOfB = j + 1;
-        for (int i=j+1; i<s.length(); i++) {
+        int countOfB = 1;
+        for (int i=1; i<s.length(); i++) {
             if (s.charAt(i) != s.charAt(i-1)) {
-                result += Math.min(countOfA, countOfB);
                 countOfA = countOfB;
                 countOfB = 1;
             } else countOfB++;
+            if (countOfB<=countOfA) result++;
         }
-        result += Math.min(countOfA, countOfB);
         return result;
     }
 
