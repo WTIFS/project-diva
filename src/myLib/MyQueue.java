@@ -3,15 +3,6 @@ package myLib;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class ListNode<E> {
-    public E val;
-    ListNode<E> next;
-
-    ListNode(E x) {
-        val = x;
-    }
-}
-
 public class MyQueue<E> {
     ListNode<E> first;
     ListNode<E> last;
