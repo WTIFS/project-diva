@@ -23,17 +23,18 @@ public class L670MaximumSwap {
         int[] lastPosition = new int[10];
         char[] digits = String.valueOf(num).toCharArray();
         for (int i=0; i<digits.length; i++) {
-            lastPosition[digits[i]-'0'] = i;
+            lastPosition[digits[i]-'0'] = i; //记录每个数字出现的最后位置
         }
         for (int i=0; i<digits.length; i++) {
             int digit = digits[i] - '0';
-            for (int k=9; k>digit; k--) {
+            for (int k=9; k>digit; k--) { //如果有比digit大的数字就交换位置
                 if (lastPosition[k]>i) {
                     swap(digits, i, lastPosition[k]);
                     return Integer.parseInt(new String(digits));
                 }
             }
         }
+        return num;
     }
 
     void swap(char[] digits, int i, int j) {
