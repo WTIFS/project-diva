@@ -29,6 +29,9 @@ public class myPrinter {
 	public static void pl(double s){
 		System.out.println(s);
 	}
+	public static void pl(List<Integer> l) {
+		pr(l);
+	}
 
     public static void pl(boolean s){
 		System.out.println(s);
