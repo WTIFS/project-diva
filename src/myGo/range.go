@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+//for循环的 range格式可以对 slice 或者 map 进行迭代循环。
+//当使用 for循环遍历一个 slice 时，每次迭代 range将返回两个值。 第一个是当前下标（序号），第二个是该下标所对应元素的一个拷贝。
 func main() {
 	var array = []string{"a", "b", "c"}
 	var m = map[string]int {"a": 0, "b": 1, "c":2}

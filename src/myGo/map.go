@@ -10,6 +10,7 @@ func main() {
 	m["China"] = "Beijing"
 	fmt.Println(m)
 
+	//当从 map 中读取某个不存在的键时，结果是 map 的元素类型的零值
 	capital, ok := m["China"]
 	fmt.Println(capital, ok)
 
