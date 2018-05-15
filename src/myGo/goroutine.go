@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"time"
-	"strconv"
 )
 
 //goroutine 是由 Go 运行时环境管理的轻量级线程。
@@ -21,15 +20,21 @@ func say(tag string, ceil int) {
 	}
 }
 
-
+var a1 string
+var done bool
+func setup() {
+	done = true
+	time.Sleep(time.Millisecond)
+	a1 = "hello"
+}
 
 func main() {
 	go say("r1", 10)
 	say("r2", 5)
 
-
-
-
-
+	go setup()
+	for !done {
+	}
+	fmt.Println(a1) //打印出的是空值
 
 }
