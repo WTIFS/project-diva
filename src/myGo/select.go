@@ -37,14 +37,19 @@ func main() {
 	//可以使用break语句来终止select语句的执行。
 	//所有跟在case关键字右边的发送语句或接收语句中的通道表达式和元素表达式都会先被求值。无论它们所在的case是否有可能被选择都会这样。
 
-	for i:=0; i<6; i++ {
+	//channel类型的计时器
+	t := time.After(300 * time.Millisecond)
+	for {
 		select {
 		case msg1 := <-c1:
 			fmt.Println(msg1)
 		case msg2 := <-c2:
 			fmt.Println(msg2)
-			//default:
-			//	fmt.Println("defalut")
+		case <- t:
+			fmt.Println("300ms has passed")
+			return
+		//default:
+		//	fmt.Println("defalut")
 		}
 	}
 
