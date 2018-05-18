@@ -3,3 +3,6 @@ src/myNodeJS/node_modules/
 .idea/
 *.iml
 *.eml
+.DS_Store
+pkg/*
+src/.DS_Store
