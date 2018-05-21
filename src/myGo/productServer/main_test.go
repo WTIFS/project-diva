@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"bytes"
+	"strconv"
 )
 
 
@@ -74,9 +75,10 @@ func TestGetNonExistentProduct(t *testing.T) {
 	}
 }
 
+//测试新建产品
 func TestCreateProduct(t *testing.T) {
 	clearTable()
-	payload := []byte(`{"name":"test product","price:11.22"`)
+	payload := []byte(`{"name":"test product","price":11.22}`)
 
 	req, _ := http.NewRequest("POST", "/product", bytes.NewBuffer(payload))
 	res := executeRequest(req)
@@ -99,6 +101,77 @@ func TestCreateProduct(t *testing.T) {
 	if m["id"] != 1.0 {
 		t.Errorf("Expected product ID to be 1. Got %v", m["id"])
 	}
+}
+
+//Get一个产品
+func TestGetProduct(t *testing.T) {
+	clearTable()
+	addProducts(1)
+
+	req, _ := http.NewRequest("GET", "/product/1", nil)
+	res := executeRequest(req)
+
+	checkResponseCode(t, http.StatusOK, res.Code)
+}
+
+func addProducts(count int) {
+	if count < 1 {
+		count = 1
+	}
+	for  i:=0; i < count; i++ {
+		a.DB.Exec("INSERT INTO products(name, price) VALUES($1, $2)", "Product " + strconv.Itoa(i), (i+1)*10)
+	}
+}
+
+//Update一个产品
+func TestUpdateProduct(t *testing.T) {
+	clearTable()
+	addProducts(1)
+
+	req, _ := http.NewRequest("GET", "/product/1", nil)
+	res := executeRequest(req)
+	var originalProduct map[string]interface{}
+	json.Unmarshal(res.Body.Bytes(), &originalProduct)
+
+	payload := []byte(`{"name":"test product - update name","price":11.22}`)
+	req, _ = http.NewRequest("PUT", "/product/1", bytes.NewBuffer(payload))
+	res = executeRequest(req)
+
+	checkResponseCode(t, http.StatusOK, res.Code)
+
+	var m map[string]interface{}
+	json.Unmarshal(res.Body.Bytes(), &m)
+
+	if m["id"] != originalProduct["id"] {
+		t.Errorf("Expected the id to remain the same (%v). Got %v", originalProduct["id"], m["id"])
+	}
+
+	if m["name"] == originalProduct["name"] {
+		t.Errorf("Expected the name to changes from '%v' to '%v'. Got '%v'", originalProduct["name"], m["name"], m["name"])
+	}
+
+	if m["price"] == originalProduct["price"] {
+		t.Errorf("Expected the price to change from %v to %v. Got %v", originalProduct["price"], m["price"], m["price"])
+	}
+}
+
+//删除一个产品
+func TestDeleteProduct(t *testing.T) {
+	clearTable()
+	addProducts(1)
+
+	req, _ := http.NewRequest("GET", "/product/1", nil)
+	res := executeRequest(req)
+	checkResponseCode(t, http.StatusOK, res.Code)
+
+	req, _ = http.NewRequest("DELETE", "/product/1", nil)
+	res = executeRequest(req)
+
+	checkResponseCode(t, http.StatusOK, res.Code)
+
+	req, _ = http.NewRequest("GET", "/product/1", nil)
+	res = executeRequest(req)
+	checkResponseCode(t, http.StatusNotFound, res.Code)
 }
 
 func checkResponseCode(t *testing.T, expected, actual int) {
