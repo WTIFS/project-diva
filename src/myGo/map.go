@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
 	var m map[string]string
@@ -21,4 +24,21 @@ func main() {
 	delete(m, "Japan")
 	fmt.Println(m)
 
+	m2 := make(map[string]interface{})
+	m2["France"] = "Paris"
+	m2["China"] = 1
+	m2["map"] = m
+	v1 := m2["France"]
+	v2 := m2["China"]
+	v3 := m2["map"]
+	fmt.Println(v1)
+	fmt.Println(v1 == "Paris") //true
+	fmt.Println(reflect.TypeOf(v1)) //string
+
+	fmt.Println(v2)
+	fmt.Println(v2 == 1) //true
+	fmt.Println(reflect.TypeOf(v2)) //int
+
+	fmt.Println(v3)
+	fmt.Println(reflect.TypeOf(v3)) //map[string]string
 }
