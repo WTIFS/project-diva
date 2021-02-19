@@ -25,18 +25,6 @@ func main() {
 		distance[y][x] = 1
 	}
 
-
-			dfsTree(1, n)
-
-
-	for i:=0; i<n; i++ {
-		for j := 1; j <= n; j++ {
-			fmt.Print(distance[i][j], " ")
-		}
-		fmt.Println()
-	}
-	return
-
 	//小度先走
 	//nextLocations := matrixMap[start]
 	//nextLocations = append(nextLocations, start) //可以停留
@@ -49,37 +37,31 @@ func main() {
 	//}
 }
 
-//func find(matrixMap map[int][]int, duLoc, aiLoc, steps int) (int) {
-//	if duLoc == aiLoc {
-//		return steps
-//	}
-//	duNextLocations := matrixMap[duLoc]
-//	duNextLocations = append(duNextLocations, duLoc) //可以停留
-//
-//	aiNextLocations := matrixMap[aiLoc]
-//
-//	for _, duNextLoc := range duNextLocations {
-//		for _, aiNextLoc := range aiNextLocations {
-//
-//		}
-//	}
-//}
+var output int
+var dist [][]int
 
-func dfsTree(start int, end int) int {
-	if start == end {
-		return 0
+func findPath(via, start, end, sum int) {
+	dist[end][via] = sum
+	if (end == 1 && sum == dist[0][via]) {
+		return
 	}
-	if distance[start][end] >= 1 {
-		return distance[start][end]
+	if (end == 1 && sum < dist[0][via]) {
+		output = MaxInt(output, dist[0][via]*2)
 	}
-	for _, neighbor := range matrixMap[start] {
-		distanceThroughNeighbor := 1 + dfsTree(neighbor, end)
-		if distanceThroughNeighbor > distance[start][end] {
-			distance[start][end] = distanceThroughNeighbor
-			distance[end][start] = distanceThroughNeighbor
+	for _, neighbor := range matrixMap[via] {
+		if neighbor == start {
+			continue
 		}
+		findPath(via, start, end, sum+1)
 	}
-	return distance[end][start]
+}
+
+func MaxInt(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
 }
 
 /*
