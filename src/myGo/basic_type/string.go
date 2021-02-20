@@ -22,8 +22,8 @@ func main() {
 	//go里的字符串使用UTF8编码，UTF8是变长版的Unicode（原始Unicode需要32位，4字节，UTF8只需1-4字节）
 	fmt.Printf("%d: %[1]q\n", s[0])         //72: 'H'，ASCII字符的UTF8码=ASCII码
 	fmt.Printf("%d: %[1]q\n", s[7])         //228: 'ä'
-	fmt.Printf("%x: %[1]q\n", s[7:10])      //e4b896: "世"，占用3字节
-	fmt.Printf("%d: %[1]q\n", []rune(s)[7]) //19990: '世'，rune会返回Unicode码点序列
+	fmt.Printf("%x: %[1]q\n", s[7:10])      //e4b896: "世"，占用3字节，e4b896为UTF8编码
+	fmt.Printf("%d: %[1]q\n", []rune(s)[7]) //19990: '世'，rune会返回Unicode码点序列，Unicode码值为19990
 	fmt.Println(len(s))                     //13
 	fmt.Println(utf8.RuneCountInString(s))  //9
 }
