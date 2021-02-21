@@ -104,7 +104,7 @@ func L57InsertInterval(intervals [][]int, newInterval []int) [][]int {
 		res = append(res, intervals[i])
 	}
 
-	//intersect part
+	//overlap part
 	for ; i < l && b >= intervals[i][0]; i++ {
 		a = minInt(a, intervals[i][0])
 		b = maxInt(b, intervals[i][1])
