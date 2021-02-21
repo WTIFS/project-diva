@@ -1,5 +1,5 @@
 /**
- * Created by chenyuanfei on 16/7/11.
+ * Created by WTIFS on 16/7/11.
  */
 /*
 371. Sum of Two Integers  QuestionEditorial

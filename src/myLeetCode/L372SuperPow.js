@@ -1,5 +1,5 @@
 /**
- * Created by chenyuanfei on 16/8/18.
+ * Created by WTIFS on 16/8/18.
  */
 /*
  372. Super Pow  QuestionEditorial Solution  My Submissions

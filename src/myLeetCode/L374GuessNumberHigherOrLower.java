@@ -1,7 +1,7 @@
 package myLeetCode;
 
 /**
- * Created by chenyuanfei on 16/7/15.
+ * Created by WTIFS on 16/7/15.
  */
 /* The guess API is defined in the parent class GuessGame.
    @param num, your guess

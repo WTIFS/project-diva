@@ -1,5 +1,5 @@
 /**
- * Created by chenyuanfei on 16/7/19.
+ * Created by WTIFS on 16/7/19.
  */
 /*
  375. Guess Number Higher or Lower II

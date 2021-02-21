@@ -1,5 +1,5 @@
 /**
- * Created by chenyuanfei on 16/9/27.
+ * Created by WTIFS on 16/9/27.
  */
 /**
  Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.

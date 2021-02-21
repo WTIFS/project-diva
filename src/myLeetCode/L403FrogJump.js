@@ -1,5 +1,5 @@
 /**
- * Created by chenyuanfei on 2017/1/12.
+ * Created by WTIFS on 2017/1/12.
  */
 /*
  A frog is crossing a river. The river is divided into x units and at each unit there may or may not exist a stone. The frog can jump on a stone, but it must not jump into the water.

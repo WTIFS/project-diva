@@ -1,5 +1,5 @@
 /**
- * Created by chenyuanfei on 16/7/12.
+ * Created by WTIFS on 16/7/12.
  */
 /*You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.
 

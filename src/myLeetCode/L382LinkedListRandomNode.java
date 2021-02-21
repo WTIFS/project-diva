@@ -1,10 +1,8 @@
 package myLeetCode;
-import myLeetCode.ListNode;
-
 import java.util.Random;
 
 /**
- * Created by chenyuanfei on 16/8/11.
+ * Created by WTIFS on 16/8/11.
  */
 /*
 382. Linked List Random Node
