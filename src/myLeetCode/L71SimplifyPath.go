@@ -37,19 +37,6 @@ Example 4:
 Input: path = "/a/./b/../../c/"
 Output: "/c"
 */
-type Stack struct {
-	C []string
-}
-
-func (self *Stack) Push(s string) {
-	self.C = append(self.C, s)
-}
-
-func (self *Stack) Pop() {
-	if len(self.C) > 0 {
-		self.C = self.C[:len(self.C)-1]
-	}
-}
 
 func main() {
 	println(simplifyPath("/home/"))
@@ -59,7 +46,7 @@ func main() {
 }
 
 func simplifyPath(path string) string {
-	stack := Stack{
+	stack := StringStack{
 		C: make([]string, 0),
 	}
 	parts := strings.Split(path, "/")
