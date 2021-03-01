@@ -5,3 +5,6 @@
 
 - 双指针
   86. PartitionList
+
+- 找规律
+  89. GrayCode
