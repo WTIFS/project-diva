@@ -20,7 +20,13 @@ func main() {
 	c := a[0:0] //同上
 	d := a[1:]  //d指向a的第一个元素，长度和容量均为1
 
-	fmt.Println(cap(a), cap(b), cap(c), cap(d))
+	//a虽然长度为2，但是可以从下标2开始截取的
+	e := a[2:]
+	e = append(e, 3)
+	//e: [3]
+	fmt.Printf("e: %v\n", e)
+
+	fmt.Println(cap(a), cap(b), cap(c), cap(d), cap(e))
 	//abc 的 capacity 均为 2，d的cap为1
 
 	//a: [0 0], b: [], c: [], d: [0]
