@@ -58,30 +58,25 @@ func main() {
 	fmt.Println(pathSum(root, -5))
 }
 
-var res [][]int
+var pathSumRes [][]int
 
 func pathSum(root *TreeNode, targetSum int) [][]int {
-	res = make([][]int, 0)
-	if root != nil {
-		pathSum2(root, targetSum-root.Val, []int{root.Val})
-	}
+	pathSumRes = make([][]int, 0)
+	pathSum2(root, targetSum, []int{})
 	return res
 }
 
 func pathSum2(root *TreeNode, targetSum int, path []int) {
-	left, right := root.Left, root.Right
-	if left == nil && right == nil {
-		if targetSum == 0 {
+	if root != nil {
+		if targetSum == root.Val && root.Left == nil && root.Right == nil {
+			path = append(path, root.Val)
 			p := make([]int, len(path))
 			copy(p, path)
-			res = append(res, p)
+			pathSumRes = append(pathSumRes, p)
+			return
 		}
-	}
-
-	if left != nil {
-		pathSum2(left, targetSum-left.Val, append(path, left.Val))
-	}
-	if right != nil {
-		pathSum2(right, targetSum-right.Val, append(path, right.Val))
+		p := append(path, root.Val)
+		pathSum2(root.Left, targetSum-root.Val, p)
+		pathSum2(root.Right, targetSum-root.Val, p)
 	}
 }
