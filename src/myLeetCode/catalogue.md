@@ -1,5 +1,6 @@
 - 动归
   115. Distinct Subsequences
+  120. Triangle (从顶到下找最短路径)
 
 - 字符串处理
   71. Simplify Path
