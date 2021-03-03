@@ -1,13 +1,14 @@
 - 动归
-  115. DistinctSubsequences
+  115. Distinct Subsequences
 
 - 字符串处理
-  71. SimplifyPath
-  93. RestoreIPAddresses
+  71. Simplify Path
+  93. Restore IP Addresses
 
 - 双指针
-  86. PartitionList
-  92. ReverseLinkedListII
+  86. Partition List
+  92. Reverse Linked List II
+  116. Populating Next Right Pointers In Each Node
 
 - 找规律
-  89. GrayCode
+  89. Gray Code
