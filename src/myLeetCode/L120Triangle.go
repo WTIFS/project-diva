@@ -66,9 +66,9 @@ func minimumTotal(triangle [][]int) int {
 	//写成自底向上可以缩短代码
 }
 
-func minInt(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
+//func minInt(a, b int) int {
+//	if a < b {
+//		return a
+//	}
+//	return b
+//}
