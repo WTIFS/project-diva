@@ -38,42 +38,48 @@ All the strings in wordList are unique.
 */
 
 func main() {
-	res := findLadders("hit", "cog", []string{"hot", "dot", "dog", "lot", "log", "cog"})
+	//res := findLadders("hit", "cog", []string{"hot", "dot", "dog", "lot", "log", "cog"})
+	//fmt.Printf("%v\n", res)
+
+	res := findLadders("red", "tax", []string{"ted", "tex", "red", "tax", "tad", "den", "rex", "pee"})
 	fmt.Printf("%v\n", res)
+
 }
 
 func findLadders(beginWord string, endWord string, wordList []string) [][]string {
-	path := []string{beginWord}
 	res := make([][]string, 0)
 	toVisit := []string{beginWord}
 	steps := []int{0}
 	minStep := math.MaxInt32
-	visited := map[string]bool{
-		beginWord: true,
-	}
 	wordMap := StringList2BoolMap(wordList)
+	paths := [][]string{{beginWord}}
+	if !wordMap[endWord] {
+		return res
+	}
 
 	for visitIndex := 0; visitIndex < len(toVisit); visitIndex++ {
-		if toVisit[visitIndex] == endWord {
-			if steps[visitIndex] <= minStep {
-				minStep = steps[visitIndex]
-				path = append(path, endWord)
-				res = append(res, path)
-			} else {
-				return res
-			}
+		if steps[visitIndex] > minStep {
+			return res
 		}
 		visitWord := toVisit[visitIndex]
 		visitRune := []rune(visitWord)
-		path = append(path, toVisit[visitIndex])
 		for i := range visitRune {
 			c := visitRune[i]
 			for j := byte(0); j < 26; j++ {
 				visitRune[i] = rune('a' + j)
-				if wordMap[string(visitRune)] && !visited[string(visitRune)] {
+				if string(visitRune) == endWord {
+					minStep = steps[visitIndex]
+					p := make([]string, len(paths[visitIndex]))
+					copy(p, paths[visitIndex])
+					p = append(p, endWord)
+					paths = append(paths, p)
+					res = append(res, p)
+				} else if wordMap[string(visitRune)] {
 					toVisit = append(toVisit, string(visitRune))
-					visited[string(visitRune)] = true
-					steps = append(steps, steps[visitIndex] + 1)
+					steps = append(steps, steps[visitIndex]+1)
+					p := make([]string, len(paths[visitIndex]))
+					copy(p, paths[visitIndex])
+					paths = append(paths, append(p, string(visitRune)))
 				}
 			}
 			visitRune[i] = c

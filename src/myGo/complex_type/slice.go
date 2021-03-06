@@ -26,6 +26,10 @@ func main() {
 	//e: [3]
 	fmt.Printf("e: %v\n", e)
 
+	//按上限截取时，比较的是cap，不是len
+	e = make([]int, 0, 10)
+	e = e[:10]
+
 	fmt.Println(cap(a), cap(b), cap(c), cap(d), cap(e))
 	//abc 的 capacity 均为 2，d的cap为1
 
