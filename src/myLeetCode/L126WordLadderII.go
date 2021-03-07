@@ -61,15 +61,16 @@ func findLadders(beginWord string, endWord string, wordList []string) [][]string
 	end := false
 
 	//遍历toVisit队列
-	toVisit := []string{beginWord}
-	for len(toVisit) > 0 && !end {
-		l := len(toVisit)
+	for len(paths) > 0 && !end {
+		l := len(paths)
 
 		//每次遍历一层
 		visited := make(map[string]bool)
 		for i := 0; i < l; i++ {
+			p := paths[i]
+
 			//本步使用的单词
-			curWord := toVisit[i]
+			curWord := p[len(p)-1]
 			curRune := []rune(curWord)
 
 			//遍历该单词的每一位
@@ -90,7 +91,6 @@ func findLadders(beginWord string, endWord string, wordList []string) [][]string
 						res = append(res, path)
 						//如果旧单词距离 + 1 > 新单词，说明之前有更短的路径到新单词，则本次不用旧单词 + 1
 					} else {
-						toVisit = append(toVisit, newWord)
 						path := appendWordToPath(paths[i], newWord)
 						paths = append(paths, path)
 					}
@@ -100,7 +100,6 @@ func findLadders(beginWord string, endWord string, wordList []string) [][]string
 		}
 
 		//弹出本层单词
-		toVisit = toVisit[l:]
 		paths = paths[l:]
 
 		//将本层单词从字典中移除，避免后续走重复路径
