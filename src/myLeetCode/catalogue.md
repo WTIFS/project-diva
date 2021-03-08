@@ -1,6 +1,7 @@
 - 动归
   115. Distinct Subsequences
   120. Triangle (从顶到下找最短路径)
+  132. Palindrome Partitioning II
 
 - 字符串处理
   71. Simplify Path
@@ -13,6 +14,7 @@
 
 - 找规律
   89. Gray Code
+  135. Candy
   
 - 深搜/广搜/遍历
   126. Word Ladder II
