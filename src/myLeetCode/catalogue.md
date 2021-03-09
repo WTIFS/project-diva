@@ -15,6 +15,7 @@
 - 找规律
   89. Gray Code
   135. Candy
+  136. Single Number
   
 - 深搜/广搜/遍历
   126. Word Ladder II
