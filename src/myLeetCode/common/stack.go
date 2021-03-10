@@ -1,4 +1,4 @@
-package main
+package common
 
 type StringStack struct {
 	C []string

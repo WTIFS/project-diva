@@ -1,5 +1,10 @@
 package main
 
+import (
+	"github.com/wtifs/project-diva/src/myLeetcode/common"
+	"math"
+)
+
 /***
 Given the head of a singly linked list, sort the list using insertion sort, and return the sorted list's head.
 
@@ -20,28 +25,42 @@ Output: [-1,0,3,4,5]
 */
 
 func main() {
-	head := IntArrayToLinkedList([]int{4, 2, 1, 3})
-	insertionSortList(head)
-	PrintIntLinkedList(head)
+	//head := common.IntArrayToLinkedList([]int{4, 2, 1, 3})
+	head := common.IntArrayToLinkedList([]int{1, 2, 3, 4})
+	//head := common.IntArrayToLinkedList([]int{3, 2, 4})
+	//head := common.IntArrayToLinkedList([]int{-1, 5, 3, 4, 0})
+	d := insertionSortList(head)
+	common.PrintIntLinkedList(d)
+
+	//d := insertionSortList(head)
+	//common.PrintIntLinkedList(d)
 }
 
-func insertionSortList(head *ListNode) *ListNode {
-	next := head.Next
+func insertionSortList(head *common.ListNode) *common.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	dummyHead := &common.ListNode{Val: -math.MaxInt32}
+	pre := dummyHead
+
 	//cur: current node
-	for cur := head.Next; cur != nil; cur = next {
-		//p: position to insert
-		var p = head
-		for cur.Val < p.Val && p != cur {
-			p = p.Next
-		}
+	for cur, next := head, head; cur != nil; cur = next {
 		next = cur.Next
-		if p == cur {
-			cur.Next = p.Next
-			p.Next = cur
+
+		if cur.Val > pre.Val {
+			//keeps pre
 		} else {
-			cur.Next = nil
+			pre = dummyHead
 		}
 
+		//p: position to insert
+		for pre.Next != nil && cur.Val > pre.Next.Val {
+			pre = pre.Next
+		}
+		cur.Next = pre.Next
+		pre.Next = cur
 	}
-	return head
+
+	return dummyHead.Next
 }

@@ -1,4 +1,4 @@
-package main
+package common
 
 type ListNode struct {
 	Val  int
