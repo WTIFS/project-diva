@@ -11,6 +11,7 @@
   86. Partition List
   92. Reverse Linked List II
   116. Populating Next Right Pointers In Each Node
+  L143. Reorder List
 
 - 找规律
   89. Gray Code
