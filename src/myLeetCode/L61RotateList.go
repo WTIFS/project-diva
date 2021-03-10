@@ -6,11 +6,6 @@ import "fmt"
  * Definition for singly-linked list.
  */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func main() {
 	h := &ListNode{Val: 1}
 	fmt.Printf("%+v\n\n", L64RotateList(h, 1))
