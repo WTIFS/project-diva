@@ -6,6 +6,7 @@
 - 字符串处理
   71. Simplify Path
   93. Restore IP Addresses
+  151. Reverse Words in a string
 
 - 双指针
   86. Partition List
