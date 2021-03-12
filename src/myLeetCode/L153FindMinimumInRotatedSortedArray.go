@@ -49,7 +49,7 @@ func main() {
 		{11, 13, 15, 17},
 	}
 	for _, tt := range testCases {
-		println(findMin(tt) == findMin2(tt))
+		println(findMin(tt) == common.MinInts(tt...))
 	}
 }
 
@@ -63,14 +63,6 @@ func findMin(nums []int) int {
 		} else {
 			left = mid + 1
 		}
-	}
-	return min
-}
-
-func findMin2(nums []int) int {
-	min := 5000
-	for _, num := range nums {
-		min = common.MinInt(min, num)
 	}
 	return min
 }
