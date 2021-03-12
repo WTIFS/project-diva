@@ -1,4 +1,4 @@
-package common
+package myLib
 
 type StringStack struct {
 	C []string

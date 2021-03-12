@@ -31,3 +31,9 @@
   
 - 拓扑
   126. Word Ladder II
+  
+- 滑动窗口
+  1461. Check If a String Contains All Binary Codes of Size K
+
+- 排序
+  164. Maximum Gap （桶排序/基数排序）

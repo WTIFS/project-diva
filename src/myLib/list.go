@@ -1,4 +1,4 @@
-package common
+package myLib
 
 type ListNode struct {
 	Val  int
