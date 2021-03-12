@@ -20,7 +20,6 @@
   135. Candy
   136. Single Number
   137. Single Number II
-  153. Find Minimum In Rotated Sorted Array
   
 - 深搜/广搜/遍历
   126. Word Ladder II
@@ -28,6 +27,7 @@
   
 - 二分查找
   153. Find Minimum In Rotated Sorted Array
+  154. Find Minimum In Rotated Sorted Array II
   
 - 拓扑
   126. Word Ladder II
