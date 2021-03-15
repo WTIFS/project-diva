@@ -5,7 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func IntArrayToLinkedList(nums []int) *ListNode {
+func IntArrayToLinkedList(nums ...int) *ListNode {
 	head := &ListNode{}
 	p := head
 	for _, num := range nums {

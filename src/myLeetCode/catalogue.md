@@ -14,6 +14,7 @@
   116. Populating Next Right Pointers In Each Node
   143. Reorder List
   147. Insertion Sort List
+  1721. Swapping Nodes in a Linked List
 
 - 找规律
   89. Gray Code
